@@ -39,6 +39,12 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'hirb'
   gem 'hirb-unicode'
+  gem 'guard', require: false
+  gem 'guard-rspec', require: false
+  gem 'guard-rubocop', require: false
+  gem 'guard-brakeman', require: false
+  gem 'guard-livereload', require: false
+  gem 'guard-rails', require: false
 end
 
 group :development do
