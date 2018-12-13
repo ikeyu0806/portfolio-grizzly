@@ -1,13 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe TopController, type: :controller do
-
-  describe "GET #index" do
+  describe 'GET #index' do
     let!(:created_posts) do
       FactoryBot.create_list(:post, 11)
     end
 
-    it "returns http success" do
+    it 'returns http success' do
       get :index
       expect(response).to have_http_status(:success)
     end
