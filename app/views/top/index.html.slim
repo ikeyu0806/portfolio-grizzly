@@ -4,6 +4,7 @@ h1 GRIZZLY
   = p 'サインインしています'
 - else
   = p 'サインインしていません'
+  = link_to "サインイン", new_user_registration_path
 
 p 最新記事一覧
 - @recent_posts.each do |post|
