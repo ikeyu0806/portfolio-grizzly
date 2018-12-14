@@ -1,4 +1,4 @@
 AllCops:
-  Exclude:
-  - '.git/**/*'
-  - 'db/*'
+
+  Style/Documentation:
+    Enabled: false
