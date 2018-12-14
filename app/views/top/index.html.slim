@@ -2,8 +2,12 @@ h1 GRIZZLY
 
 - if user_signed_in?
   = p 'サインインしています'
+  = link_to 'ログアウト', destroy_user_session_path, method: :delete
 - else
-  = p 'サインインしていません'
+  = p 'ログインしていません'
+  br
+  = link_to 'ログイン', new_user_session_path, method: :get
+  br
   = link_to "サインイン", new_user_registration_path
 
 p 最新記事一覧
