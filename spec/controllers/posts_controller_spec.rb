@@ -99,29 +99,26 @@ RSpec.describe PostsController, type: :controller do
   end
 
   describe 'PUT #update' do
-  end
-  context "有効なパラメータを投稿した時" do
-    let(:new_attributes) do
-      {
-        title: 'new_title',
-        content: 'new_content'
-      }
-
+    context 'with valid params' do
+      let(:new_attributes) do
+        {
+          title: 'new_title',
+          content: 'new_content'
+        }
+      end
       it 'updates the requested post' do
         post = Post.create! valid_attributes
         put :update, params: { id: post.to_param, post: new_attributes }
         post.reload
-        expect(response).to be_successful
+        expect(post).to have_attributes(new_attributes)
       end
-
       it 'redirects to the post' do
         post = Post.create! valid_attributes
         put :update, params: { id: post.to_param, post: valid_attributes }
         expect(response).to redirect_to(post)
       end
     end
-
-    context "無効なパラメータを投稿した時" do
+    context 'with invalid params' do
       it "returns a success response (i.e. to display the 'edit' template)" do
         post = Post.create! valid_attributes
         put :update, params: { id: post.to_param, post: invalid_attributes }
