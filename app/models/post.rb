@@ -5,5 +5,5 @@ class Post < ApplicationRecord
   validates :content, presence: true
 
   scope :load_recent_posts,
-        -> { all.order(created_at: 'DESC').limit(MAX_DISPLAY) }
+        -> { order(created_at: 'DESC').limit(MAX_DISPLAY) }
 end
