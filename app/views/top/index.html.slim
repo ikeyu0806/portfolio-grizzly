@@ -1,4 +1,10 @@
 h1 GRIZZLY
+
+- if user_signed_in?
+  = p 'サインインしています'
+- else
+  = p 'サインインしていません'
+
 p 最新記事一覧
 - @recent_posts.each do |post|
   = link_to post.title, post_path(post.id)
