@@ -2,11 +2,18 @@ doctype html
 html
   head
     meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+    meta content='width=device-width, initial-scale=1, maximum-scale=1' name='viewport'
     title Grizzly
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
   body
-    = render 'layouts/header'
-    = yield
+    .wrapper
+      header.topnavbar-wrapper
+        = render 'layouts/partial/header'
+      section.section-container
+        .content-wrapper
+          = yield
+      footer.footer-container
+        = render 'layouts/partial/footer'
