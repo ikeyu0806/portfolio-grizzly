@@ -6,12 +6,14 @@ html
     title Grizzly
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag    'application', media: 'all'
+    = stylesheet_link_tag    'application', media: 'all', id: 'maincss'
     = javascript_include_tag 'application'
   body
     .wrapper
       header.topnavbar-wrapper
         = render 'layouts/partial/header'
+      aside.aside-container
+        = render 'layouts/partial/sidebar'
       section.section-container
         .content-wrapper
           = yield
