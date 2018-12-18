@@ -1,14 +1,15 @@
 nav.navbar.topnavbar
   .navbar-header
-    .float-left
+    h1.float-left
       = link_to 'GRIZZLY', root_path
-    .float-right
-      - if user_signed_in?
-        = p 'サインインしています'
-        = link_to 'ログアウト', destroy_user_session_path, method: :delete
-      - else
-        = p 'ログインしていません'
-        br
-        = link_to 'ログイン', new_user_session_path, method: :get
-        br
-        = link_to "サインイン", new_user_registration_path
+  .text-right
+    - if user_signed_in?
+      = p 'サインインしています'
+      = link_to 'ログアウト', destroy_user_session_path, method: :delete
+    - else
+      = p 'ログインしていません'
+      br
+          /.font-weight-bold
+      = link_to 'ログイン', new_user_session_path, method: :get
+      br
+      = link_to "サインイン", new_user_registration_path
