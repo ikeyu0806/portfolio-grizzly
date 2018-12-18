@@ -1,19 +1,21 @@
 .block-center.mt-4.wd-xl
   .card.card-default
     .card-header.text-center.bg-dark
-      p.text-center.py-2 Sign up
+      h1.text-center.py-2 Sign up
     .card-body
-      = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'form_control' }) do |f|
+      = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'mb-3' }) do |f|
         = devise_error_messages!
         .form-group
-          .field
+          .input-group.with-focus
             = f.label :name
             br
-            = f.text_field :name
+            = f.text_field :name, class: 'form-control'
             br
+        .form-group
+          .input-group.with-focus
             = f.label :email
             br
-            = f.email_field :email, autofocus: true, autocomplete: "email"
+            = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control'
           .field
             = f.label :password
             - if @minimum_password_length
@@ -27,6 +29,5 @@
             = f.label :password_confirmation
             br
             = f.password_field :password_confirmation, autocomplete: "new-password"
-        .actions
-          = f.submit "Sign up"
+          = f.submit "Sign up" ,class: 'btn btn-block btn-primary mt-3'
       = render "devise/shared/links"
