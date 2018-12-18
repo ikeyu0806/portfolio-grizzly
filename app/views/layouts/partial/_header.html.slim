@@ -1,7 +1,7 @@
 nav.navbar.topnavbar
   .navbar-header
     h1.float-left
-      = link_to 'GRIZZLY', root_path
+      = link_to image_tag('logo.png'), root_path
   .text-right
     - if user_signed_in?
       = p 'サインインしています'
@@ -9,7 +9,6 @@ nav.navbar.topnavbar
     - else
       = p 'ログインしていません'
       br
-          /.font-weight-bold
       = link_to 'ログイン', new_user_session_path, method: :get
       br
       = link_to "サインイン", new_user_registration_path
