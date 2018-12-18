@@ -1,14 +1,18 @@
-- if user_signed_in?
-  = p 'サインインしています'
-  = link_to 'ログアウト', destroy_user_session_path, method: :delete
-- else
-  = p 'ログインしていません'
-  br
-  = link_to 'ログイン', new_user_session_path, method: :get
-  br
-  = link_to "サインイン", new_user_registration_path
+.content-heading 新着記事
+.card.card-default
+  .card-body
+    table#datatable1.table.table-striped.table-hover.w-100
+      thead
+        tr
+          th 記事タイトル
+          th ユーザ
+          th 投稿日時
+      tbody
+        - @recent_posts.each do |post|
+          tr
+            td
+              = link_to post.title, post_path(post.id)
+              br
+            td
+            td
 
-p 最新記事一覧
-- @recent_posts.each do |post|
-  = link_to post.title, post_path(post.id)
-  br
