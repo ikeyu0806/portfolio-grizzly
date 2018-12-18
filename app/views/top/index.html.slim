@@ -14,5 +14,7 @@
               = link_to post.title, post_path(post.id)
               br
             td
+              = post.user.name
             td
+              = post.created_at
 

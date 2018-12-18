@@ -1,8 +1,9 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   def index
-    @posts = Post.all
+    @posts = Post.where(user_id: current_user.id)
   end
 
   def show

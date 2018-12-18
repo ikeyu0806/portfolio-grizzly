@@ -1,4 +1,16 @@
-- @posts.each do |post|
-  = post.title
-  br
-  = current_user.id
+.content-heading 新着記事
+.card.card-default
+  .card-body
+    table#datatable1.table.table-striped.table-hover.w-100
+      thead
+        tr
+          th 記事タイトル
+          th ユーザ
+          th 投稿日時
+      tbody
+        - @posts.each do |post|
+          tr
+            td = post.title
+              br
+            td
+            td
