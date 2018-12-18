@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
   MAX_DISPLAY = 10
 
+  belongs_to :user
   validates :title, presence: true
   validates :content, presence: true
 

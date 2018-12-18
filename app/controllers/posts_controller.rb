@@ -2,7 +2,13 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = Post.all
+    @posts = Post.
+    # 自分のユーザだけに絞ること（自分のだけ見れる）
+    # 新規登録時はpostにcurrent_userを紐付けて保存
+    # 編集画面で自分の以外はひらけないようにする
+    # save、updateも同様
+    # deleteも自分のだけ
+    # post_contrillerは自分のだけ扱えるもの
   end
 
   def show
@@ -10,6 +16,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @post.user = current_user
   end
 
   def edit
