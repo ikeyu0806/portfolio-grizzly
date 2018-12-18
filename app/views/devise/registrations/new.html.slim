@@ -3,31 +3,29 @@
     .card-header.text-center.bg-dark
       h1.text-center.py-2 Sign up
     .card-body
-      = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'mb-3' }) do |f|
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
         = devise_error_messages!
         .form-group
-          .input-group.with-focus
-            = f.label :name
-            br
-            = f.text_field :name, class: 'form-control'
-            br
+          = f.label :name
+          br
+          = f.text_field :name, class: 'form-control'
         .form-group
-          .input-group.with-focus
-            = f.label :email
-            br
-            = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control'
+          = f.label :email
+          br
+          = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control'
           .field
-            = f.label :password
-            - if @minimum_password_length
-              em
-                | (
-                = @minimum_password_length
-                |  characters minimum)
-            br
-            = f.password_field :password, autocomplete: "new-password"
-          .field
-            = f.label :password_confirmation
-            br
-            = f.password_field :password_confirmation, autocomplete: "new-password"
+        .form-group
+          = f.label :password
+          - if @minimum_password_length
+            em
+              | (
+              = @minimum_password_length
+              |  characters minimum)
+          br
+          = f.password_field :password, autocomplete: "new-password", class: 'form-control'
+        .form-group
+          = f.label :password_confirmation
+          br
+          = f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control'
           = f.submit "Sign up" ,class: 'btn btn-block btn-primary mt-3'
       = render "devise/shared/links"
