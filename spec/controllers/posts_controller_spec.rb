@@ -1,18 +1,26 @@
 require 'rails_helper'
 
 RSpec.describe PostsController, type: :controller do
+  let!(:user) { create(:user) }
+
   let(:valid_attributes) do
     {
       title: 'title',
-      content: 'content'
+      content: 'content',
+      user: user
     }
   end
 
   let(:invalid_attributes) do
     {
       title: '',
-      content: ''
+      content: '',
+      user: user
     }
+  end
+
+  before do
+    sign_in user
   end
 
   describe 'GET #index' do
