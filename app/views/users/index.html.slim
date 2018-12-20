@@ -1,0 +1,15 @@
+.card.card-default
+  .card-header
+    h1 ユーザ一覧
+  .card-body
+    table#datatable1.table.table-striped.table-hover.w-100
+      thead
+        tr
+          th ユーザ名
+          th 自己紹介（実装予定）
+      tbody
+        - @users.each do |user|
+          tr
+            td
+              = user.name
+            td
