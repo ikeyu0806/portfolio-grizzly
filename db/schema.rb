@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_19_074853) do
+ActiveRecord::Schema.define(version: 2018_12_20_035955) do
+
+  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "fk_rails_87a8aac469"
+    t.index ["user_id", "post_id"], name: "index_likes_on_user_id_and_post_id", unique: true
+  end
 
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "title"
@@ -44,6 +53,8 @@ ActiveRecord::Schema.define(version: 2018_12_19_074853) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "likes", "posts"
+  add_foreign_key "likes", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "relations", "users", column: "follow_id"
   add_foreign_key "relations", "users", column: "follower_id"
