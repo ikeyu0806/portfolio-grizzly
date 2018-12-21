@@ -1,16 +1,14 @@
-.content-heading ユーザ詳細
+.content-heading
+  p #{@user.name}の記事一覧
 .card.card-default
-  .card-header
-    = @user.name
-    br
-    = link_to "#{@user.name}の記事一覧", user_posts_path(@user.name)
   .card-body
     table#datatable1.table.table-striped.table-hover.w-100
       thead
         tr
-          th 記事一覧（こっちは人気記事とかにするかも）
+          th 記事一覧
       tbody
         - @posts.each do |post|
           tr
             td
               = link_to  post.title, post_path(post)
+
