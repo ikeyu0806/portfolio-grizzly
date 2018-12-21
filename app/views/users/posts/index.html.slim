@@ -1,0 +1,14 @@
+.content-heading ユーザ詳細
+.card.card-default
+  .card-header
+    = @user.name
+  .card-body
+    table#datatable1.table.table-striped.table-hover.w-100
+      thead
+        tr
+          th 記事一覧
+      tbody
+        - @posts.each do |post|
+          tr
+            td
+              = link_to  post.title, post_path(post)
