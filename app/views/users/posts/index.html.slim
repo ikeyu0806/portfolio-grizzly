@@ -1,7 +1,6 @@
-.content-heading ユーザ詳細
+.content-heading
+  p #{@user.name}の記事一覧
 .card.card-default
-  .card-header
-    = @user.name
   .card-body
     table#datatable1.table.table-striped.table-hover.w-100
       thead
