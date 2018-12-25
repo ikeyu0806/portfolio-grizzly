@@ -8,5 +8,6 @@ module Grizzly
   class Application < Rails::Application
     config.load_defaults 5.2
     config.autoload_paths << "#{Rails.root}/app/uploaders"
+    config.autoload_paths << "#{Rails.root}/app/form"
   end
 end
