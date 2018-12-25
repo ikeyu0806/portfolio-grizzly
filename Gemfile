@@ -13,6 +13,7 @@ gem 'slim', '3.0.9'
 gem 'slim-rails'
 gem 'mysql2'
 gem 'devise'
+gem 'carrierwave'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

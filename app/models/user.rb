@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  mount_uploader :avatar, AvatarUploader
 
   has_many :active_relationships, class_name:  'Relation',
                                   foreign_key: 'follower_id',
