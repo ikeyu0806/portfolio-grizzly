@@ -2,6 +2,7 @@
 .card.card-default
   .card-header
     = @user.name
+    = image_tag @user.avatar.url
     br
     = link_to "#{@user.name}の記事一覧", user_posts_path(@user.name)
   .card-body

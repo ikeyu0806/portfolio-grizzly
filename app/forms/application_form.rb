@@ -1,4 +1,4 @@
 class ApplicationForm
   include ActiveModel::Model
-  include ActiveModel::Attributes
+  include Virtus.model
 end
