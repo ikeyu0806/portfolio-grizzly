@@ -110,6 +110,9 @@ GEM
       factory_bot (~> 4.11.1)
       railties (>= 3.0.0)
     ffi (1.9.25)
+    file_validators (2.3.0)
+      activemodel (>= 3.2)
+      mime-types (>= 1.0)
     formatador (0.2.5)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
@@ -343,6 +346,7 @@ DEPENDENCIES
   chromedriver-helper
   devise
   factory_bot_rails
+  file_validators
   guard
   guard-brakeman
   guard-livereload

@@ -31,3 +31,6 @@
 /config/master.key
 
 /vendor/bundle
+
+public/uploads/user/avatar/*
+public/uploads/tmp/*

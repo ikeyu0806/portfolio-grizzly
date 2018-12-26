@@ -2,6 +2,8 @@ module Setting
   module Profile
     class EditForm < ApplicationForm
       extend CarrierWave::Mount
+      include ActiveModel::Validations
+
       mount_uploader :avatar, AvatarUploader
 
       attr_accessor :user
@@ -9,7 +11,7 @@ module Setting
       attribute :avatar, ActionDispatch::Http::UploadedFile
 
       validates :profile, presence: :true
-      validates :avatar, presence: :true, file_size: { less_than: 1.megabytes }
+      validates :avatar,  presence: :true, file_size: { less_than: 1.megabytes }
 
       def save
         user = User.find(@user.id)

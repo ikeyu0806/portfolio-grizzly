@@ -6,7 +6,9 @@ module Setting
     end
 
     def update
-      @form = Setting::Profile::EditForm.new(user_params.merge(user: current_user))
+      @form = Setting::Profile::EditForm.new(
+        user_params.merge(user: current_user)
+      )
       @form.save
     end
 

@@ -15,6 +15,7 @@ gem 'mysql2'
 gem 'devise'
 gem 'carrierwave'
 gem 'virtus'
+gem 'file_validators'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
