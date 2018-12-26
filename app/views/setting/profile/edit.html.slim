@@ -1,5 +1,5 @@
 h1 ユーザプロフィール編集ページ
-= @form
-= form_for @form, url: edit_setting_profile_path do |f|
+= form_for @form, url: setting_profile_path,  html: {method: :patch} do |f|
   = f.text_field :profile
+  br
   = f.submit

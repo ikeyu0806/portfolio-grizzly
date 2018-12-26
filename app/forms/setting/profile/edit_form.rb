@@ -1,11 +1,14 @@
 module Setting
   module Profile
     class EditForm < ApplicationForm
-      # attribute :user,    User
-      # attribute :avatar,   String
+      attr_accessor :user
       attribute :profile, :string
 
-      profile = 'test'
+      def save
+        user = User.find(@user.id)
+        user.profile = profile
+        user.save
+      end
     end
   end
 end
