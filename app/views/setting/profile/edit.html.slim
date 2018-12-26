@@ -1,5 +1,11 @@
 h1 ユーザプロフィール編集ページ
 = form_for @form, url: setting_profile_path,  html: {method: :patch} do |f|
+  label プロフィール
+  br
   = f.text_field :profile
+  br
+  f.label ユーザ画像
+  br
+  = f.file_field :avatar
   br
   = f.submit

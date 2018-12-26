@@ -17,7 +17,7 @@ module Setting
     end
 
     def user_params
-      params.require(:setting_profile_edit_form).permit(:profile)
+      params.require(:setting_profile_edit_form).permit(:profile, :avatar)
     end
   end
 end
