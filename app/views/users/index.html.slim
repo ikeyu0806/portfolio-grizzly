@@ -12,7 +12,6 @@
         - @users.each do |user|
           tr
             td
-              = user.name
+              = link_to user.name, user_path(user)
             td
             td
-              em.fa-2x.icon-user-follow.mr-2
