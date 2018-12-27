@@ -27,6 +27,10 @@ class User < ApplicationRecord
     active_relationships.find_by(follower_id: other_user.id).destroy
   end
 
+  def following?(other_user)
+    self.following.include?(other_user)
+  end
+
   def to_param
     name
   end
