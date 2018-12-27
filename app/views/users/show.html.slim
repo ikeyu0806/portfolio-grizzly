@@ -5,6 +5,7 @@
     = image_tag @user.avatar.url if @user.avatar.file.present?
     br
     = link_to "#{@user.name}の記事一覧", user_posts_path(@user.name)
+.card
   .card-body
     table#datatable1.table.table-striped.table-hover.w-100
       thead
@@ -15,3 +16,21 @@
           tr
             td
               = link_to  post.title, post_path(post)
+.card
+  .card-body
+    table#datatable1.table.table-striped.table-hover.w-100
+      thead
+        tr
+          th フォロー数
+          th フォロワー数
+      tbody
+        tr
+          td
+            = @user.following.count
+          td
+            = @user.followers.count
+.card
+  .card-body
+    = form_for(current_user.active_relationships.build(follow_id: @user.id)) do |f|
+      = f.hidden_field :follow_id
+      = f.submit 'フォロー', class: "btn btn-large btn-primary follow-btn"
