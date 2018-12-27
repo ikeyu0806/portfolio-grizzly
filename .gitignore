@@ -34,3 +34,4 @@
 
 public/uploads/user/avatar/*
 public/uploads/tmp/*
+public/uploads/tmp/**/*
