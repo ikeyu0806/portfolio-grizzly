@@ -1,14 +1,14 @@
-nav.navbar.topnavbar
-  .navbar-header
-    h1.float-left
-      = link_to image_tag('logo.png'), root_path
+nav.navbar.topnavbar.bg-primary
+  navbar-header
+    a.navbar-brand
+      .brand-logo
   .text-right
     - if user_signed_in?
-      = p 'サインインしています'
-      = link_to 'ログアウト', destroy_user_session_path, method: :delete
+      = link_to destroy_user_session_path, method: :delete do
+        em.fa-2x.icon-logout.mr-2.fa-lg
+      end
+
     - else
-      = p 'ログインしていません'
-      br
-      = link_to 'ログイン', new_user_session_path, method: :get
-      br
-      = link_to "サインイン", new_user_registration_path
+        = link_to new_user_session_path, method: :get do
+          em.fa-2x.icon-login.mr-2.fa-lg
+        end

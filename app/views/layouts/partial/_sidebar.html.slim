@@ -2,7 +2,13 @@
 .aside-inner
   nav.sidebar data-sidebar-anyclick-close=''
     ul.sidebar-nav
-      span
-        = t 'sidebar'
-        br
-        = t 'sidebar'
+      li.sidebar-subnav-header
+        = link_to 'トップページ', root_path
+      li.sidebar-subnav-header
+        = link_to 'ユーザ一覧', users_path
+      li.sidebar-subnav-header
+        = link_to 'ユーザ設定', edit_setting_profile_path
+      li.sidebar-subnav-header
+        = link_to 'ユーザ詳細（保留）'
+      li.sidebar-subnav-header
+        = link_to '記事一覧', posts_path

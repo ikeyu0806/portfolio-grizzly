@@ -8,6 +8,7 @@ html
     = csp_meta_tag
     = stylesheet_link_tag 'base'
     = stylesheet_link_tag    'application', media: 'all', id: 'maincss'
+    = stylesheet_link_tag 'angle/themes/theme-g'
     /= stylesheet_link_tag params[:controller]
     = yield :vendor_css_area
     = javascript_include_tag 'application'

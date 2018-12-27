@@ -7,9 +7,12 @@
         tr
           th ユーザ名
           th 自己紹介（実装予定）
+          th フォロー
       tbody
         - @users.each do |user|
           tr
             td
               = user.name
             td
+            td
+              em.fa-2x.icon-user-follow.mr-2

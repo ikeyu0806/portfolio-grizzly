@@ -14,6 +14,18 @@ Rails.application.config.assets.precompile += %w( jquery-ui-touch-punch/jquery.u
 Rails.application.config.assets.precompile += %w( x-editable/dist/bootstrap3-editable/css/bootstrap-editable.css )
 Rails.application.config.assets.precompile += %w( x-editable/dist/bootstrap3-editable/js/bootstrap-editable.min.js )
 Rails.application.config.assets.precompile += %w( base.css )
+Rails.application.config.assets.precompile += %w[
+  base.js
+  base.css
+  angle/themes/theme-a.css
+  angle/themes/theme-b.css
+  angle/themes/theme-c.css
+  angle/themes/theme-d.css
+  angle/themes/theme-e.css
+  angle/themes/theme-f.css
+  angle/themes/theme-g.css
+  angle/themes/theme-h.css
+]
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
