@@ -2,6 +2,8 @@ nav.navbar.topnavbar.bg-primary
   navbar-header
     a.navbar-brand
       .brand-logo
+    - if user_signed_in?
+      = current_user.name
   .text-right
     - if user_signed_in?
       = link_to destroy_user_session_path, method: :delete do

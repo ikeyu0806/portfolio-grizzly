@@ -13,8 +13,8 @@ class User < ApplicationRecord
                                    foreign_key: 'follow_id',
                                    dependent:   :destroy
 
-  has_many :following, through: :active_relationships, source: :followed
-  has_many :followers, through: :passive_relationships, source: :follower
+  has_many :following, through: :active_relationships, source: 'followed'
+  has_many :followers, through: :passive_relationships, source: 'follower'
 
   has_many :likes, dependent:   :destroy
   has_many :posts, dependent:   :destroy
@@ -28,7 +28,8 @@ class User < ApplicationRecord
   end
 
   def following?(other_user)
-    self.following.include?(other_user)
+    # self.following.include?(other_user)
+    active_relationships.find_by(follow_id: other_user.id)
   end
 
   def to_param

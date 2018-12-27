@@ -1,0 +1,3 @@
+- if current_user.active_relationships.find_by(follow_id: @user.id).presence
+  = form_for(current_user.active_relationships.find_by(follow_id: @user.id), html: { method: :delete }) do |f|
+    = f.submit 'アンフォロー', class: 'btn btn-large btn-primary'
