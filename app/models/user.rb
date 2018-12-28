@@ -28,7 +28,6 @@ class User < ApplicationRecord
   end
 
   def following?(other_user)
-    # self.following.include?(other_user)
     active_relationships.find_by(follow_id: other_user.id)
   end
 
