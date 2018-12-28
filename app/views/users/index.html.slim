@@ -6,7 +6,7 @@
       thead
         tr
           th ユーザ名
-          th 自己紹介（実装予定）
+          th 自己紹介
           th フォロー
       tbody
         - @users.each do |user|
@@ -14,4 +14,5 @@
             td
               = link_to user.name, user_path(user)
             td
+              = user.profile
             td
