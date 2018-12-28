@@ -1,12 +1,14 @@
-p#notice = notice
+.card
+  .card-default.card-body
+    p#notice = notice
+    strong Title
+    .mb-3.form-control.form-control-lg
+      = @post.title
+    strong Content
+    div
+      .form-control.wysiwyg.mt-3  style="height:250px; max-height:250px;"
+        = @post.content
 
-p
-  strong Title:
-  = @post.title
-p
-  strong Content:
-  = @post.content
-
-=> link_to 'Edit', edit_post_path(@post)
-'|
-=< link_to 'Back', posts_path
+    => link_to 'Edit', edit_post_path(@post)
+    '|
+    =< link_to 'Back', posts_path
