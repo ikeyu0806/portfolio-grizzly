@@ -1,1 +1,9 @@
-h1　relation_list
+.content-heading 関連ユーザ一覧
+.card.card-default
+  .card-body
+    - @following.each do |user|
+      = user.name
+.card.card-default
+  .card-body
+    - @followers.each do |user|
+      = user.name
