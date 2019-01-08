@@ -44,6 +44,11 @@ guard 'livereload' do
   watch(%r{config/locales/.+\.yml})
 end
 
+guard :foreman, concurrency: 'webpacker=1,worker=0' do
+  watch(%r{^config/webpack/.*})
+  watch('config/webpacker.yml')
+end
+
 guard 'rails' do
   watch('Gemfile.lock')
   watch(%r{^(config|lib)/.*})

@@ -16,6 +16,8 @@ gem 'devise'
 gem 'carrierwave'
 gem 'virtus'
 gem 'file_validators'
+gem 'webpacker'
+gem "i18n-js"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -29,6 +31,7 @@ group :development, :test do
   gem 'guard-brakeman', require: false
   gem 'guard-livereload', require: false
   gem 'guard-rails', require: false
+  gem 'guard-foreman', require: false
 end
 
 group :development do
@@ -40,6 +43,7 @@ group :development do
   gem 'rubocop-rspec', require: false
   gem 'slim_lint', require: false
   gem 'html2slim'
+  gem 'foreman'
 end
 
 group :test do
