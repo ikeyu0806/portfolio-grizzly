@@ -39,6 +39,7 @@ group :development do
   gem 'rubocop', require: false
   gem 'rubocop-rspec', require: false
   gem 'slim_lint', require: false
+  gem 'html2slim'
 end
 
 group :test do
