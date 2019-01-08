@@ -1,0 +1,20 @@
+
+doctype html
+html lang=I18n.locale
+  head
+    meta charset='utf-8'
+    meta content='width=device-width, initial-scale=1, maximum-scale=1' name='viewport'
+    title
+      = t 'service_name'
+    = stylesheet_link_tag 'base'
+    = stylesheet_link_tag 'application', media: 'all', id: 'maincss'
+    = csrf_meta_tags
+    = favicon_link_tag
+  body
+    .wrapper
+      = yield
+    .p-lg.text-center
+      span
+        = t 'copyright'
+    = javascript_include_tag 'base'
+    = javascript_include_tag 'application'
