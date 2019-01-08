@@ -8,4 +8,8 @@ Rails.application.routes.draw do
   resources :users, only: %i(index show), param: :name do
     resources :posts, only: %i(index), controller: 'users/posts'
   end
+
+  resource :setting do
+    resource :profile, only: %i(edit update), controller: 'setting/profile'
+  end
 end
