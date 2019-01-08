@@ -1,9 +1,32 @@
 .content-heading 関連ユーザ一覧
-.card.card-default
-  .card-body
-    - @following.each do |user|
-      = user.name
-.card.card-default
-  .card-body
-    - @followers.each do |user|
-      = user.name
+.row
+  .col-xl-6.card.card-default
+    .card-body
+      table#datatable1.table.table-striped.table-hover.w-100
+        thead
+          tr
+            th フォロー
+        tbody
+          - if @followings.present?
+            - @followings.each do |following|
+              tr
+                td
+                  = following.name if following.present?
+          - else
+            tr
+              td
+  .col-xl-6.card.card-default
+    .card-body
+      table#datatable1.table.table-striped.table-hover.w-100
+        thead
+          tr
+            th フォロワー
+        tbody
+          - if @followers.present?
+            - @followers.each do |follower|
+            tr
+              td
+                = follower.name if follower.present?
+          - else
+            tr
+              td

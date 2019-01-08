@@ -5,7 +5,7 @@
     = image_tag @user.avatar.url if @user.avatar.file.present?
     br
     = link_to "#{@user.name}の記事一覧", user_posts_path(@user.name)
-    /= link_to "#{@user.name}の関連ユーザ一覧", relation_lists_path(@user.name)
+    = link_to "#{@user.name}の関連ユーザ一覧", user_relation_lists_path(@user.name)
 .card
   .card-body
     table#datatable1.table.table-striped.table-hover.w-100
