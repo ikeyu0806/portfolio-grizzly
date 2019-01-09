@@ -5,13 +5,16 @@
       table#datatable1.table.table-striped.table-hover.w-100
         thead
           tr
-            th フォロー
+            th アイコン
+            th ユーザ名
         tbody
           - if @followings.present?
             - @followings.each do |following|
               tr
                 td
-                  = following.name if following.present?
+                  = image_tag following.avatar.url, width:'50', height: '50' if following.avatar.file.present?
+                td
+                  = following.name
           - else
             tr
               td
@@ -20,13 +23,16 @@
       table#datatable1.table.table-striped.table-hover.w-100
         thead
           tr
-            th フォロワー
+            th アイコン
+            th ユーザ名
         tbody
           - if @followers.present?
             - @followers.each do |follower|
-            tr
-              td
-                = follower.name if follower.present?
+              tr
+                td
+                  = image_tag follower.avatar.url, width:'50', height: '50' if follower.avatar.file.present?
+                td
+                  = follower.name
           - else
             tr
               td
