@@ -1,18 +1,29 @@
 .content-heading
   = "#{@user.name}詳細ページ"
-.card.card-default
-  .card-header.text-center
-    = image_tag @user.avatar.url, width:'300', height: '300', class: 'rounded-circle'
-    br
-    - unless current_user == @user
-      #follow_form
-        - if current_user.following?(@user)
-          = render 'unfollow'
-        - else
-          = render 'follow'
-.card.card-default
-  h1 test
-.card-deck
+.card-deck.m-sm-auto
+  .card.card-default
+    .card-body.text-center
+        = image_tag @user.avatar.url, width:'150', height: '150', class: 'rounded-circle'
+        br
+        - unless current_user == @user
+          #follow_form
+            - if current_user.following?(@user)
+              = render 'unfollow'
+            - else
+              = render 'follow'
+    .card-body.text-center.bg-gray-dark
+      .row.mx-auto
+        .col-6
+          h3
+            = @user.following.count
+          p Following
+        .col-6
+          h3
+            = @user.followers.count
+          p Follower
+  .card.card-default
+    h1 何か置く
+.card-deck.m-xl-auto
   .card.card-default
     .card-body
       table#datatable1.table.table-striped.table-hover.w-100
