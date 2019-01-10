@@ -2,32 +2,32 @@
 .card.card-default
   .card-header
     = @user.name
-    = image_tag @user.avatar.url, width:'100', height: '100' if @user.avatar.file.present?
+    = image_tag @user.avatar.url, width:'100', height: '100', class: 'rounded-circle' if @user.avatar.file.present?
     br
     = link_to "#{@user.name}の記事一覧", user_posts_path(@user.name)
     br
     = link_to "#{@user.name}の関連ユーザ一覧", user_relation_lists_path(@user.name)
-.card
-  .card-body
-    table#datatable1.table.table-striped.table-hover.w-100
-      thead
-        tr
-          th 記事一覧（こっちは人気記事とかにするかも）
-      tbody
-        - @posts.each do |post|
-          tr
-            td
-              = link_to post.title, post_path(post)
-.card
-  .card-body
-    #follow_count
-      = render 'follow_count'
-.card
-  .card-body
     - unless current_user == @user
       #follow_form
         - if current_user.following?(@user)
           = render 'unfollow'
         - else
           = render 'follow'
+.card-deck
+  .card.card-default
+    .card-body
+      table#datatable1.table.table-striped.table-hover.w-100
+        thead
+          tr
+            th 記事一覧（こっちは人気記事とかにするかも）
+        tbody
+          - @posts.each do |post|
+            tr
+              td
+                = link_to post.title, post_path(post)
+  .card.card-default
+    .card-body
+      #follow_count
+        = render 'follow_count'
+
 
