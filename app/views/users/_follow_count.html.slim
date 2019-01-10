@@ -1,11 +1,10 @@
-table#datatable1.table.table-striped.table-hover.w-100
-  thead
-    tr
-      th フォロー数
-      th フォロワー数
-  tbody
-    tr
-      td
+.card-body.text-center.bg-gray-dark
+  .row.mx-auto
+    .col-6
+      h3
         = @user.following.count
-      td
+      p Following
+    .col-6
+      h3
         = @user.followers.count
+      p Follower
