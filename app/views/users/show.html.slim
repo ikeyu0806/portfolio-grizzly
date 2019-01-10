@@ -27,10 +27,8 @@
           th フォロワー数
       tbody
         tr
-          td
-            = @user.following.count
-          td
-            = @user.followers.count
+          #follow_count
+          = render 'follow_count'
 .card
   .card-body
     - unless current_user == @user
