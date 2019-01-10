@@ -1,4 +1,11 @@
-td
-  = @user.following.count
-td
-  = @user.followers.count
+table#datatable1.table.table-striped.table-hover.w-100
+  thead
+    tr
+      th フォロー数
+      th フォロワー数
+  tbody
+    tr
+      td
+        = @user.following.count
+      td
+        = @user.followers.count

@@ -20,15 +20,8 @@
               = link_to post.title, post_path(post)
 .card
   .card-body
-    table#datatable1.table.table-striped.table-hover.w-100
-      thead
-        tr
-          th フォロー数
-          th フォロワー数
-      tbody
-        tr
-          #follow_count
-          = render 'follow_count'
+    #follow_count
+      = render 'follow_count'
 .card
   .card-body
     - unless current_user == @user
