@@ -1,11 +1,13 @@
-h1 ユーザプロフィール編集ページ
-= form_for @form, url: setting_profile_path,  html: {method: :patch} do |f|
-  label プロフィール
-  br
-  = f.text_field :profile
-  br
-  f.label ユーザ画像
-  br
-  = f.file_field :avatar
-  br
-  = f.submit
+.content-heading ユーザプロフィール編集ページ
+.card.card-default
+  .card-body
+    = form_for @form, url: setting_profile_path,  html: {method: :patch} do |f|
+      strong 自己紹介を入力してください
+      br
+        = f.text_area :profile, class: 'form-control wysiwyg mt-3', style: "height:100px; max-height:250px;"
+      br
+      strong アイコンを選択してください
+      br
+      = f.file_field :avatar, class: 'fa'
+      br
+      = f.submit 'アップロード', class: 'btn btn-large btn-primary'
