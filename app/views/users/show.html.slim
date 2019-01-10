@@ -4,8 +4,6 @@
     = @user.name
     = image_tag @user.avatar.url, width:'100', height: '100', class: 'rounded-circle'
     br
-    = link_to "#{@user.name}の記事一覧", user_posts_path(@user.name)
-    br
     = link_to "#{@user.name}の関連ユーザ一覧", user_relation_lists_path(@user.name)
     - unless current_user == @user
       #follow_form
@@ -13,13 +11,16 @@
           = render 'unfollow'
         - else
           = render 'follow'
+.card.card-default
+  h1 test
 .card-deck
   .card.card-default
     .card-body
       table#datatable1.table.table-striped.table-hover.w-100
         thead
           tr
-            th 記事一覧（こっちは人気記事とかにするかも）
+            th
+              = link_to "#{@user.name}の記事一覧", user_posts_path(@user.name)
         tbody
           - @posts.each do |post|
             tr
@@ -27,7 +28,32 @@
                 = link_to post.title, post_path(post)
   .card.card-default
     .card-body
+      table#datatable1.table.table-striped.table-hover.w-100
+        thead
+          tr
+            th
+              = link_to "フォローしているユーザ", user_relation_lists_path(@user.name)
+        tbody
+          - @user.following.each do |follow|
+            tr
+              td
+                = follow.name
+  .card.card-default
+    .card-body
+      table#datatable1.table.table-striped.table-hover.w-100
+        thead
+          tr
+            th
+              = link_to "フォローされているユーザ", user_relation_lists_path(@user.name)
+        tbody
+          - @user.followers.each do |follower|
+            tr
+              td
+                = follower.name
+  .card.card-default
+    .card-body
       #follow_count
         = render 'follow_count'
+
 
 
