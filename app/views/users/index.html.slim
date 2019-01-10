@@ -12,7 +12,7 @@
         - @users.each do |user|
           tr
             td
-              = image_tag user.avatar.url, width:'50', height: '50', class: 'rounded-circle' if user.avatar.file.present?
+              = image_tag user.avatar.url, width:'50', height: '50', class: 'rounded-circle'
             td
               = link_to user.name, user_path(user)
             td

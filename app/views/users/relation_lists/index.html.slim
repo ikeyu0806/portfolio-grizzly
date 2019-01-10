@@ -13,7 +13,7 @@
             - @followings.each do |following|
               tr
                 td
-                  = image_tag following.avatar.url, width:'50', height: '50', class: 'rounded-circle' if following.avatar.file.present?
+                  = image_tag following.avatar.url, width:'50', height: '50', class: 'rounded-circle'
                 td
                   = following.name
           - else
@@ -32,7 +32,7 @@
             - @followers.each do |follower|
               tr
                 td
-                  = image_tag follower.avatar.url, width:'50', height: '50', class: 'rounded-circle' if follower.avatar.file.present?
+                  = image_tag follower.avatar.url, width:'50', height: '50', class: 'rounded-circle'
                 td
                   = follower.name
           - else
