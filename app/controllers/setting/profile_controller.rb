@@ -10,6 +10,7 @@ module Setting
         user_params.merge(user: current_user)
       )
       @form.save
+      redirect_to edit_setting_profile_path
     end
 
     private
