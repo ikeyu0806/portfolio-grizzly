@@ -5,11 +5,14 @@
     table#datatable1.table.table-striped.table-hover.w-100
       thead
         tr
+          th アイコン
           th ユーザ名
           th 自己紹介
       tbody
         - @users.each do |user|
           tr
+            td
+              = image_tag user.avatar.url, width:'50', height: '50' if user.avatar.file.present?
             td
               = link_to user.name, user_path(user)
             td
