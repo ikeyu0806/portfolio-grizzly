@@ -1,10 +1,9 @@
-.content-heading ユーザ詳細
+.content-heading
+  = "#{@user.name}詳細ページ"
 .card.card-default
-  .card-header
-    = @user.name
-    = image_tag @user.avatar.url, width:'100', height: '100', class: 'rounded-circle'
+  .card-header.text-center
+    = image_tag @user.avatar.url, width:'300', height: '300', class: 'rounded-circle'
     br
-    = link_to "#{@user.name}の関連ユーザ一覧", user_relation_lists_path(@user.name)
     - unless current_user == @user
       #follow_form
         - if current_user.following?(@user)
