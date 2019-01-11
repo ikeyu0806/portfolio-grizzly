@@ -40,7 +40,7 @@
             currentItem
             .addClass('active') // activate the parent
             .children('.collapse') // find the collapse
-            .collapse('show'); // and show it
+            // .collapse('show'); // and show it
 
         // remove this if you use only collapsible sidebar items
         $sidebar.find('li > a + ul').on('show.bs.collapse', function(e) {

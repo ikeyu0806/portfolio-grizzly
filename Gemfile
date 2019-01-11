@@ -17,6 +17,7 @@ gem 'carrierwave'
 gem 'virtus'
 gem 'file_validators'
 gem 'webpacker'
+gem "jquery-rails"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
