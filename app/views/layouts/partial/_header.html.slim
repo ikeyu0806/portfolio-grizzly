@@ -10,9 +10,11 @@ nav.navbar.topnavbar.bg-primary
     - if user_signed_in?
       = link_to destroy_user_session_path, method: :delete do
         em.fa-2x.icon-logout.mr-2.fa-lg
+        span logout
       end
 
     - else
         = link_to new_user_session_path, method: :get do
           em.fa-2x.icon-login.mr-2.fa-lg
+          span login
         end
