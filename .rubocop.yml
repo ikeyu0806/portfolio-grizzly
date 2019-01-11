@@ -3,6 +3,7 @@ AllCops:
     - 'db/schema.rb'
     - 'vendor/**/*'
     - 'config/initializers/assets.rb'
+    - 'node_modules/node-sass/src/libsass/extconf.rb'
 
 Style/Documentation:
   Enabled: false
