@@ -7,10 +7,11 @@
         br
         - unless current_user == @user
           #follow_form
-            - if current_user.following?(@user)
-              = render 'unfollow'
-            - else
-              = render 'follow'
+            - if current_user.present?
+              - if current_user.following?(@user)
+                = render 'unfollow'
+              - else
+                = render 'follow'
     .card-body.text-center.bg-gray-dark
       #follow_count
         = render 'follow_count'
