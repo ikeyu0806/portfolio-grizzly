@@ -65,7 +65,8 @@ RSpec.describe PostsController, type: :controller do
         expect(response).to be_successful
       end
     end
-    context 'ログインページに遷移すること' do
+
+    context 'ログインしていない場合' do
       it '正常に応答すること' do
         post = Post.create! valid_attributes
         get :edit, params: { id: post.to_param }
@@ -142,18 +143,16 @@ RSpec.describe PostsController, type: :controller do
     end
 
     context 'ログインしていない場合' do
-      context 'with valid params' do
-        let(:new_attributes) do
-          {
-            title: 'new_title',
-            content: 'new_content'
-          }
-        end
-        it 'ログイン画面に遷移すること' do
-          post = Post.create! valid_attributes
-          put :update, params: { id: post.to_param, post: valid_attributes }
-          expect(response).to redirect_to new_user_session_path
-        end
+      let(:new_attributes) do
+        {
+          title: 'new_title',
+          content: 'new_content'
+        }
+      end
+      it 'ログイン画面に遷移すること' do
+        post = Post.create! valid_attributes
+        put :update, params: { id: post.to_param, post: valid_attributes }
+        expect(response).to redirect_to new_user_session_path
       end
     end
   end
