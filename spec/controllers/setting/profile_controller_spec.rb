@@ -27,9 +27,12 @@ RSpec.describe Setting::ProfileController, type: :controller do
       before do
         sign_in user
       end
+      let(:image_path) { File.join(Rails.root, 'spec/fixtures/icon.svg') }
+      let(:new_avatar) { Rack::Test::UploadedFile.new(image_path) }
       let(:new_form_params) do
         {
-          profile: 'new_profile'
+          profile: 'new_profile',
+          avatar: new_avatar
         }
       end
       it '想定通りに更新されること' do
