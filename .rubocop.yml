@@ -3,14 +3,15 @@ AllCops:
     - 'db/schema.rb'
     - 'vendor/**/*'
     - 'config/initializers/assets.rb'
-    - 'node_modules/node-sass/src/libsass/extconf.rb'
-
-Style/Documentation:
-  Enabled: false
+    - 'node_modules/**/*'
 
 Metrics/MethodLength:
   Max: 40
 
-Style/LineLength:
+Metrics/LineLength:
   Max: 130
+
+Style/Documentation:
+  Enabled: false
+
 
