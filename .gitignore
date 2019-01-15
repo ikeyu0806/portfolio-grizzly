@@ -40,4 +40,4 @@ public/uploads/tmp/**/*
 /node_modules
 yarn-debug.log*
 .yarn-integrity
-node_modules/node-sass/src/libsass/extconf.rb
+node_modules/**/*
