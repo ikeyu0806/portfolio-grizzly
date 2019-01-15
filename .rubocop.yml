@@ -10,3 +10,7 @@ Style/Documentation:
 
 Metrics/MethodLength:
   Max: 40
+
+Style/LineLength:
+  Max: 130
+
