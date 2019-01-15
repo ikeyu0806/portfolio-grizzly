@@ -1,6 +1,8 @@
 module Setting
   class ProfileController < ApplicationController
+    before_action :authenticate_user!
     before_action :set_user
+
     def edit
       @form = Setting::Profile::EditForm.new(user: @user)
     end
