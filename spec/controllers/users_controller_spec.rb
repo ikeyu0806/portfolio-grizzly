@@ -9,13 +9,13 @@ RSpec.describe UsersController, type: :controller do
       before do
         sign_in user
       end
-      it 'returns a success response' do
+      it '正常に応答すること' do
         get :index, params: {}
         expect(response).to be_successful
       end
     end
     context 'ログインしていない場合' do
-      it 'returns a success response' do
+      it '正常に応答すること' do
         get :index, params: {}
         expect(response).to be_successful
       end
@@ -27,13 +27,13 @@ RSpec.describe UsersController, type: :controller do
       before do
         sign_in user
       end
-      it 'returns a success response' do
+      it '正常に応答すること' do
         get :show, params: { name: user.to_param }
         expect(response).to be_successful
       end
     end
     context 'ログインしていない場合' do
-      it 'returns a success response' do
+      it '正常に応答すること' do
         get :show, params: { name: user.to_param }
         expect(response).to be_successful
       end

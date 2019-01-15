@@ -28,7 +28,7 @@ RSpec.describe TopController, type: :controller do
         FactoryBot.create_list(:post, 11, user: user)
       end
 
-      it 'returns http success' do
+      it '正常に応答すること' do
         get :index
         expect(response).to have_http_status(:success)
       end
