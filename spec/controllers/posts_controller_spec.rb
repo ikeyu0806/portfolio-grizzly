@@ -67,7 +67,7 @@ RSpec.describe PostsController, type: :controller do
     end
 
     context 'ログインしていない場合' do
-      it '正常に応答すること' do
+      it 'ログインページに遷移すること' do
         post = Post.create! valid_attributes
         get :edit, params: { id: post.to_param }
         expect(response).to redirect_to new_user_session_path
@@ -81,7 +81,7 @@ RSpec.describe PostsController, type: :controller do
         sign_in user
       end
       context '正常なパラメータの場合' do
-        it '記事を作成する時' do
+        it '記事を作成できること' do
           expect do
             post :create, params: { post: valid_attributes }
           end.to change(Post, :count).by(1)
@@ -134,7 +134,7 @@ RSpec.describe PostsController, type: :controller do
         end
       end
       context '不正なパラメータの場合' do
-        it "returns a success response (i.e. to display the 'edit' template)" do
+        it "正常に応答すること" do
           post = Post.create! valid_attributes
           put :update, params: { id: post.to_param, post: invalid_attributes }
           expect(response).to be_successful
