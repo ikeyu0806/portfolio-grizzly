@@ -23,17 +23,17 @@ RSpec.describe Setting::ProfileController, type: :controller do
   end
 
   describe 'PUT #update' do
+    let(:image_path) { File.join(Rails.root, 'spec/fixtures/icon.svg') }
+    let(:new_avatar) { Rack::Test::UploadedFile.new(image_path) }
+    let(:new_form_params) do
+      {
+        profile: 'new_profile',
+        avatar: new_avatar
+      }
+    end
     context 'ログインしている場合' do
       before do
         sign_in user
-      end
-      let(:image_path) { File.join(Rails.root, 'spec/fixtures/icon.svg') }
-      let(:new_avatar) { Rack::Test::UploadedFile.new(image_path) }
-      let(:new_form_params) do
-        {
-          profile: 'new_profile',
-          avatar: new_avatar
-        }
       end
       it '想定通りに更新されること' do
         put :update, params: { user: user, setting_profile_edit_form: new_form_params }
@@ -46,6 +46,13 @@ RSpec.describe Setting::ProfileController, type: :controller do
       it '設定ページに遷移すること' do
         put :update, params: { user: user, setting_profile_edit_form: new_form_params }
         expect(response).to redirect_to edit_setting_profile_path
+      end
+    end
+
+    context 'ログインしていない場合' do
+      it 'ログインページに遷移すること' do
+        put :update, params: { user: user, setting_profile_edit_form: new_form_params }
+        expect(response).to redirect_to new_user_session_path
       end
     end
   end
