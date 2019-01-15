@@ -21,4 +21,29 @@ RSpec.describe Setting::ProfileController, type: :controller do
       end
     end
   end
+
+  describe 'PUT #update' do
+    context 'ログインしている場合' do
+      before do
+        sign_in user
+      end
+      let(:new_form_params) do
+        {
+          profile: 'new_profile'
+        }
+      end
+      it '想定通りに更新されること' do
+        put :update, params: { user: user, setting_profile_edit_form: new_form_params }
+        user.reload
+        user_attributes = {
+          profile: new_form_params[:profile]
+        }
+        expect(user).to have_attributes(user_attributes)
+      end
+      it '設定ページに遷移すること' do
+        put :update, params: { user: user, setting_profile_edit_form: new_form_params }
+        expect(response).to redirect_to edit_setting_profile_path
+      end
+    end
+  end
 end
