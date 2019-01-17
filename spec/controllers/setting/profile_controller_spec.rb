@@ -23,12 +23,13 @@ RSpec.describe Setting::ProfileController, type: :controller do
   end
 
   describe 'PUT #update' do
-    let(:image_path) { File.join(Rails.root, 'spec/fixtures/icon.svg') }
-    let(:new_avatar) { Rack::Test::UploadedFile.new(image_path) }
+    let(:uploaded_file) do
+      fixture_file_upload('spec/fixtures/icon.jpg', 'image/jpeg')
+    end
     let(:new_form_params) do
       {
         profile: 'new_profile',
-        avatar: new_avatar
+        avatar: uploaded_file
       }
     end
     context 'ログインしている場合' do
@@ -42,6 +43,7 @@ RSpec.describe Setting::ProfileController, type: :controller do
           profile: new_form_params[:profile]
         }
         expect(user).to have_attributes(user_attributes)
+        expect(user.avatar.url).not_to be_nil
       end
       it '設定ページに遷移すること' do
         put :update, params: { user: user, setting_profile_edit_form: new_form_params }
