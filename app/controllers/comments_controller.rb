@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     if @comment.destroyable?(current_user)
     else
-
+      head :forbidden
     end
   end
 
