@@ -21,10 +21,17 @@
               .media
                 = link_to user_path(comment.user) do
                   = image_tag comment.user.avatar.url, width:'50', height: '50', class: 'rounded-circle'
+                | &nbsp;
+                | &nbsp;
+                | &nbsp;
+                | &nbsp;
+                | &nbsp;
               .media-body
                 .row.col-sm-10
                   h5
                     = link_to  comment.user.name, user_path(comment.user)
+                  | &nbsp;
+                  | &nbsp;
                   small
                     = comment.updated_at
                 h3
