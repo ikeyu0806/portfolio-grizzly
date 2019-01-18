@@ -17,6 +17,7 @@
     p
       - @post.comments.each do |comment|
         = comment.content
+        br
 - if current_user.present?
   .card
     .card-body
