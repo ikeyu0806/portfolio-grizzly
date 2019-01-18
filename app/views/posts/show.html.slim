@@ -12,20 +12,19 @@
       = link_to '記事を編集する', edit_post_path(@post), class: 'btn btn-large btn-primary'
     = link_to '戻る', posts_path, class: 'btn btn-large btn-green'
 .card
+  card-header コメント一覧
   .card-body
-    card-header コメント一覧
-    p
       - @post.comments.each do |comment|
         media
-          = link_to user_path(comment.user) do
-            = image_tag comment.user.avatar.url, width:'50', height: '50', class: 'rounded-circle'
-          media-body
+          .row.col-sm-6
+            = link_to user_path(comment.user) do
+              = image_tag comment.user.avatar.url, width:'50', height: '50', class: 'rounded-circle'
             h4
               = comment.user.name
-            p
-              = comment.content
             small
               = comment.updated_at
+            p
+              = comment.content
             br
 - if current_user.present?
   .card
