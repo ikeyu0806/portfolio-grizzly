@@ -14,6 +14,9 @@
 .card
   .card-body
     strong コメント一覧
+    p
+      - @post.comments.each do |comment|
+        = comment.content
 - if current_user.present?
   .card
     .card-body
