@@ -15,17 +15,21 @@
   card-header コメント一覧
   .card-body
       - @post.comments.each do |comment|
-        media
-          .row.col-sm-6
-            = link_to user_path(comment.user) do
-              = image_tag comment.user.avatar.url, width:'50', height: '50', class: 'rounded-circle'
-            h4
-              = comment.user.name
-            small
-              = comment.updated_at
-            p
-              = comment.content
-            br
+        .list-group
+          .list-group-item
+            .row.col-sm-10
+              .media
+                = link_to user_path(comment.user) do
+                  = image_tag comment.user.avatar.url, width:'50', height: '50', class: 'rounded-circle'
+              .media-body
+                .row.col-sm-6
+                  h4
+                    = comment.user.name
+                  small
+                    = comment.updated_at
+                  p
+                    = comment.content
+                br
 - if current_user.present?
   .card
     .card-body
