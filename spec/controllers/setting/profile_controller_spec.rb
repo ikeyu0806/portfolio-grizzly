@@ -43,7 +43,7 @@ RSpec.describe Setting::ProfileController, type: :controller do
           profile: new_form_params[:profile]
         }
         expect(user).to have_attributes(user_attributes)
-        expect(user.avatar.url).not_to eq 'default.png'
+        expect(user.avatar.url).to eq "/uploads/user/avatar/#{user.id}/icon.jpg"
       end
       it '設定ページに遷移すること' do
         put :update, params: { user: user, setting_profile_edit_form: new_form_params }
