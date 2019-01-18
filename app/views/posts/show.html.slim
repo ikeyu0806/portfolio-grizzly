@@ -9,11 +9,18 @@
       .form-control.wysiwyg.mt-3  style="height:250px; max-height:250px;"
         = @post.content
     - if current_user.present?
-      = link_to 'Edit', edit_post_path(@post), class: 'btn btn-large btn-primary'
-    = link_to 'Back', posts_path, class: 'btn btn-large btn-green'
+      = link_to '記事を編集する', edit_post_path(@post), class: 'btn btn-large btn-primary'
+    = link_to '戻る', posts_path, class: 'btn btn-large btn-green'
 .card
   .card-body
-    p コメント一覧
-.card
-  .card-body
-    p コメントする
+    strong コメント一覧
+- if current_user.present?
+  .card
+    .card-body
+      strong コメントする
+      = form_for @comment do |f|
+        = f.text_field :content, class: 'mb-3 form-control form-control-lg'
+        = f.hidden_field :user_id, value: current_user.id
+        = f.hidden_field :post_id, value: @post.id
+        br
+        = f.submit 'コメントする', class: 'btn btn-large btn-primary'
