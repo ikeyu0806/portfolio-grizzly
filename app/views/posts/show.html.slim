@@ -13,16 +13,20 @@
     = link_to '戻る', posts_path, class: 'btn btn-large btn-green'
 .card
   .card-body
-    strong コメント一覧
+    card-header コメント一覧
     p
       - @post.comments.each do |comment|
-        = image_tag comment.user.avatar.url, width:'50', height: '50', class: 'rounded-circle'
-        = comment.user.name
-        br
-        = comment.content
-        br
-        = comment.updated_at
-        br
+        media
+          = link_to user_path(comment.user) do
+            = image_tag comment.user.avatar.url, width:'50', height: '50', class: 'rounded-circle'
+          media-body
+            h4
+              = comment.user.name
+            p
+              = comment.content
+            small
+              = comment.updated_at
+            br
 - if current_user.present?
   .card
     .card-body
