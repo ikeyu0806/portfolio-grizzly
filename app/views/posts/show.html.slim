@@ -6,7 +6,7 @@
       = @post.title
     strong Content
     div
-      .form-control.wysiwyg.mt-3  style="height:250px; max-height:250px;"
+      .form-control.wysiwyg.mt-3  style="height:250px; max-height:500px;"
         = @post.content
     - if current_user.present?
       = link_to '記事を編集する', edit_post_path(@post), class: 'btn btn-large btn-primary'
@@ -38,7 +38,10 @@
                   = comment.content
                 br
                 p
-                  = link_to '削除する', comment_path(comment), method: :delete
+                  / 一旦保留
+                  /- if @comment.destroyable?(current_user)
+                  - if current_user == @comment.user || current_user == @post.user
+                    = link_to '削除する', comment_path(comment), method: :delete, class: 'btn btn-danger btn-xs'
 - if current_user.present?
   .card
     .card-body
@@ -48,4 +51,4 @@
         = f.hidden_field :user_id, value: current_user.id
         = f.hidden_field :post_id, value: @post.id
         br
-        = f.submit 'コメントする', class: 'btn btn-large btn-primary'
+          = f.submit 'コメントする', class: 'btn btn-large btn-primary'
