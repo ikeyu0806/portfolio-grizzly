@@ -37,6 +37,8 @@
                 h3
                   = comment.content
                 br
+                p
+                  = link_to '削除する', comment_path(comment), method: :delete
 - if current_user.present?
   .card
     .card-body

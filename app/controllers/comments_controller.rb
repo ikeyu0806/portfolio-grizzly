@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :destroyable?
+
   def new
     @post = Post.new
   end
@@ -9,7 +11,20 @@ class CommentsController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
 
+  def destroy
+    @comment.destroy
+    redirect_back(fallback_location: root_path)
+  end
+
   private
+
+  def destroyable?
+    @comment = Comment.find(params[:id])
+    if @comment.destroyable?(current_user)
+    else
+
+    end
+  end
 
   def comment_params
     params.require(:comment)
