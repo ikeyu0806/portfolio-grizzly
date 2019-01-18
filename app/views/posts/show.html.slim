@@ -16,7 +16,12 @@
     strong コメント一覧
     p
       - @post.comments.each do |comment|
+        = image_tag comment.user.avatar.url, width:'50', height: '50', class: 'rounded-circle'
+        = comment.user.name
+        br
         = comment.content
+        br
+        = comment.updated_at
         br
 - if current_user.present?
   .card
