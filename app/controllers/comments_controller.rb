@@ -20,10 +20,7 @@ class CommentsController < ApplicationController
 
   def destroyable?
     @comment = Comment.find(params[:id])
-    if @comment.destroyable?(current_user)
-    else
-      head :forbidden
-    end
+    head :forbidden unless @comment.destroyable?(current_user)
   end
 
   def comment_params
