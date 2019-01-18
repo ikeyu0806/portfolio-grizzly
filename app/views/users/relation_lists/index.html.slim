@@ -1,0 +1,42 @@
+.content-heading 関連ユーザ一覧
+.card-deck
+  .col-xl-6.card.card-default
+    .card-header  フォロー
+    .card-body
+      table#datatable1.table.table-striped.table-hover.w-100
+        thead
+          tr
+            th アイコン
+            th ユーザ名
+        tbody
+          - if @followings.present?
+            - @followings.each do |following|
+              tr
+                td
+                  = link_to user_path(following) do
+                    = image_tag following.avatar.url, width:'50', height: '50', class: 'rounded-circle'
+                td
+                  = following.name
+          - else
+            tr
+              td
+  .col-xl-6.card.card-default
+    .card-header  フォロワー
+    .card-body
+      table#datatable1.table.table-striped.table-hover.w-100
+        thead
+          tr
+            th アイコン
+            th ユーザ名
+        tbody
+          - if @followers.present?
+            - @followers.each do |follower|
+              tr
+                td
+                  = link_to user_path(follower) do
+                    = image_tag follower.avatar.url, width:'50', height: '50', class: 'rounded-circle'
+                td
+                  = follower.name
+          - else
+            tr
+              td

@@ -7,10 +7,15 @@ html
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'base'
-    = stylesheet_link_tag    'application', media: 'all', id: 'maincss'
     /= stylesheet_link_tag params[:controller]
+    = stylesheet_link_tag    'application', media: 'all', id: 'maincss'
+    = stylesheet_link_tag 'angle/themes/theme-h'
+    = stylesheet_pack_tag 'application'
     = yield :vendor_css_area
+    = javascript_pack_tag 'application'
     = javascript_include_tag 'application'
+    = javascript_include_tag 'base'
+    = favicon_link_tag 'kuma_favicon.png'
   body
     .wrapper
       header.topnavbar-wrapper
@@ -22,8 +27,7 @@ html
           = yield
       footer.footer-container
         = render 'layouts/partial/footer'
-/= javascript_include_tag 'base'
+= javascript_include_tag 'base'
 /= javascript_include_tag params[:controller]
 = yield :vendor_js_area
-= javascript_include_tag 'application'
 = yield :body_area

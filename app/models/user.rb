@@ -5,12 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   mount_uploader :avatar, AvatarUploader
 
-  has_many :active_relationships, class_name:  'Relation',
-                                  foreign_key: 'follower_id',
+  has_many :active_relationships, class_name:  :Relation,
+                                  foreign_key: :follower_id,
                                   dependent:   :destroy
 
-  has_many :passive_relationships, class_name:  'Relation',
-                                   foreign_key: 'follow_id',
+  has_many :passive_relationships, class_name:  :Relation,
+                                   foreign_key: :follow_id,
                                    dependent:   :destroy
 
   has_many :following, through: :active_relationships, source: :followed
@@ -20,11 +20,15 @@ class User < ApplicationRecord
   has_many :posts, dependent:   :destroy
 
   def follow(other_user)
-    active_relationships.create(followed_id: other_user.id)
+    active_relationships.create(follow_id: other_user.id)
   end
 
   def unfollow(other_user)
-    active_relationships.find_by(followed_id: other_user.id).destroy
+    active_relationships.find_by(follow_id: other_user.id).destroy
+  end
+
+  def following?(other_user)
+    active_relationships.find_by(follow_id: other_user.id)
   end
 
   def to_param

@@ -1,4 +1,5 @@
 Rails.application.configure do
+  config.webpacker.check_yarn_integrity = true
   config.cache_classes = false
 
   config.eager_load = false

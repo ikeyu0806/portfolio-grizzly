@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :relation do
-    follow_id { '' }
-    follower_id { '' }
+    id 1
+    follow_id 2
+    follower_id 1
   end
 end

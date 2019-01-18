@@ -1,15 +1,21 @@
+.content-heading ユーザ一覧
 .card.card-default
-  .card-header
-    h1 ユーザ一覧
   .card-body
     table#datatable1.table.table-striped.table-hover.w-100
       thead
         tr
+          th アイコン
           th ユーザ名
-          th 自己紹介（実装予定）
+          th 自己紹介
       tbody
         - @users.each do |user|
           tr
             td
-              = user.name
+              = link_to user_path(user) do
+                = image_tag user.avatar.url, width:'50', height: '50', class: 'rounded-circle'
             td
+              = link_to user.name, user_path(user)
+            td
+              = user.profile
+
+

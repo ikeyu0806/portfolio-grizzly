@@ -1,23 +1,21 @@
-h1 Listing posts
-
-table
-  thead
-    tr
-      th Title
-      th Content
-      th
-      th
-      th
-
-  tbody
-    - @posts.each do |post|
-      tr
-        td = post.title
-        td = post.content
-        td = link_to 'Show', post
-        td = link_to 'Edit', edit_post_path(post)
-        td = link_to 'Destroy', post, data: { confirm: 'Are you sure?' }, method: :delete
-
-br
-
-= link_to 'New Post', new_post_path
+.content-heading 記事一覧
+.card.card-default
+  .card-body
+    table#datatable1.table.table-striped.table-hover.w-100
+      thead
+        tr
+          th タイトル
+          th ユーザ
+          th 投稿日時
+      tbody
+        - @posts.each do |post|
+          tr
+            td
+              =  link_to post.title, post_path(post)
+            td
+              = post.user.name
+            td
+              = post.created_at
+      br
+      - if current_user.present?
+        = link_to 'New Post', new_post_path

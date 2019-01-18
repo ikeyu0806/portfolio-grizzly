@@ -1,0 +1,3 @@
+= form_for(current_user.active_relationships.build(follow_id: @user.id), remote: true, authenticity_token: true) do |f|
+  = f.hidden_field :follow_id
+  = f.submit 'フォロー', class: 'btn btn-large btn-primary'

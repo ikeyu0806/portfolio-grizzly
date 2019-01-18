@@ -1,15 +1,16 @@
-= form_for @post do |f|
-  - if @post.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:"
-      ul
-        - @post.errors.full_messages.each do |message|
-          li = message
-
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :content
-    = f.text_area :content
-  .actions = f.submit
+.card
+  .card-default.card-body
+    = form_for @post do |f|
+      - if @post.errors.any?
+        #error_explanation
+          h2 = "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:"
+          ul
+            - @post.errors.full_messages.each do |message|
+              li = message
+      strong Title
+      br
+      = f.text_field :title, class: 'mb-3 form-control form-control-lg'
+      div
+        = f.text_area :content, class: 'form-control wysiwyg mt-3', style: "height:250px; max-height:250px;"
+      .actions
+        = f.submit
