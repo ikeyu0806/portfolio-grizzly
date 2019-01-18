@@ -1,38 +1,59 @@
-.content-heading ユーザ詳細
-.card.card-default
-  .card-header
-    = @user.name
-    = image_tag @user.avatar.url if @user.avatar.file.present?
-    br
-    = link_to "#{@user.name}の記事一覧", user_posts_path(@user.name)
-.card
-  .card-body
-    table#datatable1.table.table-striped.table-hover.w-100
-      thead
-        tr
-          th 記事一覧（こっちは人気記事とかにするかも）
-      tbody
-        - @posts.each do |post|
+.content-heading
+  = "#{@user.name}詳細ページ"
+.card-deck.m-sm-auto
+  .card.card-default
+    .card-body.text-center
+        = image_tag @user.avatar.url, width:'150', height: '150', class: 'rounded-circle'
+        br
+        - unless current_user == @user
+          #follow_form
+            - if current_user.present?
+              - if current_user.following?(@user)
+                = render 'unfollow'
+              - else
+                = render 'follow'
+    .card-body.text-center.bg-gray-dark
+      #follow_count
+        = render 'follow_count'
+  .card.card-default
+    h1 何か置く
+.card-deck.m-xl-auto
+  .card.card-default
+    .card-body
+      table#datatable1.table.table-striped.table-hover.w-100
+        thead
           tr
-            td
-              = link_to post.title, post_path(post)
-.card
-  .card-body
-    table#datatable1.table.table-striped.table-hover.w-100
-      thead
-        tr
-          th フォロー数
-          th フォロワー数
-      tbody
-        tr
-          td
-            = @user.following.count
-          td
-            = @user.followers.count
-.card
-  .card-body
-    - unless current_user == @user
-      - if current_user.following?(@user)
-        = render 'unfollow'
-      - else
-        = render 'follow'
+            th
+              = link_to "#{@user.name}の記事一覧", user_posts_path(@user.name)
+        tbody
+          - @posts.each do |post|
+            tr
+              td
+                = link_to post.title, post_path(post)
+  .card.card-default
+    .card-body
+      table#datatable1.table.table-striped.table-hover.w-100
+        thead
+          tr
+            th
+              = link_to "フォローしているユーザ", user_relation_lists_path(@user.name)
+        tbody
+          - @user.following.each do |follow|
+            tr
+              td
+                = follow.name
+  .card.card-default
+    .card-body
+      table#datatable1.table.table-striped.table-hover.w-100
+        thead
+          tr
+            th
+              = link_to "フォローされているユーザ", user_relation_lists_path(@user.name)
+        tbody
+          - @user.followers.each do |follower|
+            tr
+              td
+                = follower.name
+
+
+

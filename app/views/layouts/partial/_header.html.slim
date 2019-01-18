@@ -3,14 +3,18 @@ nav.navbar.topnavbar.bg-primary
     a.navbar-brand
       .brand-logo
     - if user_signed_in?
+      = link_to user_path(current_user) do
+        = image_tag current_user.avatar.url, width:'25', height: '25', class: 'rounded-circle'
       = current_user.name
   .text-right
     - if user_signed_in?
       = link_to destroy_user_session_path, method: :delete do
         em.fa-2x.icon-logout.mr-2.fa-lg
+        span logout
       end
 
     - else
         = link_to new_user_session_path, method: :get do
           em.fa-2x.icon-login.mr-2.fa-lg
+          span login
         end

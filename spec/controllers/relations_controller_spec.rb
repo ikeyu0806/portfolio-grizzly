@@ -16,7 +16,7 @@ RSpec.describe RelationsController, type: :controller do
   end
 
   describe 'GET #create' do
-    it 'returns http success' do
+    it '正常に応答すること' do
       expect do
         post :create, params: create_params
       end.to change(Relation, :count).by(1)
@@ -25,7 +25,7 @@ RSpec.describe RelationsController, type: :controller do
 
   describe 'GET #destroy' do
     let!(:relation) { create(:relation) }
-    it 'returns http success' do
+    it '正常に応答すること' do
       expect do
         delete :destroy, params: { id: relation.to_param }
       end.to change(Relation, :count).by(-1)
