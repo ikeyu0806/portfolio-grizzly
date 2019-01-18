@@ -22,13 +22,13 @@
                 = link_to user_path(comment.user) do
                   = image_tag comment.user.avatar.url, width:'50', height: '50', class: 'rounded-circle'
               .media-body
-                .row.col-sm-6
-                  h4
-                    = comment.user.name
+                .row.col-sm-10
+                  h5
+                    = link_to  comment.user.name, user_path(comment.user)
                   small
                     = comment.updated_at
-                  p
-                    = comment.content
+                h3
+                  = comment.content
                 br
 - if current_user.present?
   .card
