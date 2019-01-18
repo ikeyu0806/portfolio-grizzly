@@ -3,9 +3,15 @@ AllCops:
     - 'db/schema.rb'
     - 'vendor/**/*'
     - 'config/initializers/assets.rb'
+    - 'node_modules/**/*'
+
+Metrics/MethodLength:
+  Max: 40
+
+Metrics/LineLength:
+  Max: 130
 
 Style/Documentation:
   Enabled: false
 
-Metrics/MethodLength:
-  Max: 40
+

@@ -1,6 +1,8 @@
 module Setting
   class ProfileController < ApplicationController
+    before_action :authenticate_user!
     before_action :set_user
+
     def edit
       @form = Setting::Profile::EditForm.new(user: @user)
     end
@@ -10,6 +12,7 @@ module Setting
         user_params.merge(user: current_user)
       )
       @form.save
+      redirect_to edit_setting_profile_path
     end
 
     private
