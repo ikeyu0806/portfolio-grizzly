@@ -1,10 +1,6 @@
 class CommentsController < ApplicationController
   before_action :destroyable?, only: :destroy
 
-  def new
-    @post = Post.new
-  end
-
   def create
     @comment = Comment.new(comment_params)
     @comment.save
