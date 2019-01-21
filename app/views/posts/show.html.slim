@@ -38,9 +38,7 @@
                   = comment.content
                 br
                 p
-                  / 一旦保留
-                  /- if @comment.destroyable?(current_user)
-                  - if current_user == comment.user || current_user == @post.user
+                  - if comment.destroyable?(current_user)
                     = link_to '削除する', comment_path(comment), method: :delete, class: 'btn btn-danger btn-xs'
 - if current_user.present?
   .card
