@@ -12,7 +12,7 @@
       = link_to '記事を編集する', edit_post_path(@post), class: 'btn btn-large btn-primary'
     = link_to '戻る', posts_path, class: 'btn btn-large btn-green'
 .card
-  card-header コメント一覧
+  strong コメント一覧
   .card-body
       - @post.comments.each do |comment|
         .list-group
