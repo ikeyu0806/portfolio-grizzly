@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :destroyable?
+  before_action :destroyable?, only: :destroy
 
   def new
     @post = Post.new
