@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :destroyable?, only: :destroy
+  before_action :authenticate_user!
 
   def create
     @comment = Comment.new(comment_params)
@@ -21,7 +22,7 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment)
-          .permit(:content, :user_id, :post_id)
+          .permit(:content, :post_id)
           .merge(user_id: current_user.id)
   end
 end
