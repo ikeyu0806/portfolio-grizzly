@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'top#index'
-  resources :posts
-  resources :comments, only: %i(create destroy)
+  resources :posts do
+    resources :comments, only: %i(create destroy), controller: 'posts/comments'
+  end
   resources :relations, only: %i(create destroy)
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

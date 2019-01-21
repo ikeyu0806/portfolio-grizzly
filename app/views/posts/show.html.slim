@@ -43,12 +43,12 @@
                 br
                 p
                   - if comment.destroyable?(current_user)
-                    = link_to '削除する', comment_path(comment), method: :delete, class: 'btn btn-danger btn-xs'
+                    = link_to '削除する', post_comment_path(@post, comment), method: :delete, class: 'btn btn-danger btn-xs'
 - if current_user.present?
   .card
     .card-body
       strong コメントする
-      = form_for @comment do |f|
+      = form_for [@post, @comment] do |f|
         = f.text_field :content, class: 'mb-3 form-control form-control-lg'
         = f.hidden_field :user_id, value: current_user.id
         = f.hidden_field :post_id, value: @post.id
