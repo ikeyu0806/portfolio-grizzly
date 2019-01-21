@@ -18,7 +18,7 @@ RSpec.describe Posts::CommentsController, type: :controller do
       before do
         sign_in comment_user
       end
-      it '正常に応答すること' do
+      it 'コメントが作成されること' do
         expect do
           post :create, params: valid_attributes
         end.to change(Comment, :count).by(1)
