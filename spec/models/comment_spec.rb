@@ -11,7 +11,7 @@ RSpec.describe Comment, type: :model do
     expect(comment.destroyable?(post_user)).to be true
   end
 
-  it 'コメントを書いたユーザがコメントを削除可能できること' do
+  it 'コメントを書いたユーザがコメントを削除できること' do
     expect(comment.destroyable?(comment_user)).to be true
   end
 
