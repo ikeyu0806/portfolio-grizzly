@@ -51,7 +51,7 @@ RSpec.describe Posts::CommentsController, type: :controller do
         sign_in comment_user
       end
       let!(:comment) { create(:comment, user: comment_user, post: commented_post) }
-      it '正常に応答すること' do
+      it 'コメントが削除されること' do
         expect do
           delete :destroy, params: delete_params
         end.to change(Comment, :count).by(-1)
