@@ -26,13 +26,13 @@ RSpec.describe CommentsController, type: :controller do
   describe 'GET #create' do
     it '正常に応答すること' do
       expect do
-        post :create, params: { comment: valid_attributes }, session: {}
+        post :create, params: { comment: valid_attributes }
       end.to change(Comment, :count).by(1)
     end
 
-    xit '記事作成ページにリダイレクトすること' do
+    it '記事作成ページにリダイレクトすること' do
       post :create, params: { comment: valid_attributes }
-      expect(response).to redirect_to(Post.last)
+      expect(response).to redirect_to root_path
     end
   end
 
