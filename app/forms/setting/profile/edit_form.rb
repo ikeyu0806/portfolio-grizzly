@@ -12,8 +12,8 @@ module Setting
       attribute :profile, String
       attribute :avatar, ActionDispatch::Http::UploadedFile
 
-      validates :profile, presence: :true
-      validates :avatar,  presence: :true, file_size: { less_than: 1.megabytes }
+      validates :profile, presence: true
+      validates :avatar,  presence: true, file_size: { less_than: 1.megabytes }
 
       def save
         user = User.find(@user.id)

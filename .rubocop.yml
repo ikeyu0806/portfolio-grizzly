@@ -12,6 +12,8 @@ Rails:
 
 Metrics/BlockLength:
   Max: 30
+  Exclude:
+    - 'Guardfile'
 
 Metrics/MethodLength:
   Max: 40
