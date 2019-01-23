@@ -22,7 +22,7 @@ class Post < ApplicationRecord
     likes.destroy(user_id: user.id)
   end
 
-  def like?(user)
-    Like.find_by(user_id: user.id)
+  def like?(user, post)
+    Like.find_by(user_id: user.id, post_id: post.id)
   end
 end

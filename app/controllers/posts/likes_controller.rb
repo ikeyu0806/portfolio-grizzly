@@ -6,7 +6,7 @@ module Posts
     def create
       @post.like(current_user)
       respond_to do |format|
-        format.html { fallback_location: root_path }
+        format.html { @post }
         format.js
       end
     end
@@ -14,7 +14,7 @@ module Posts
     def destroy
       @post.unlike(current_user)
       respond_to do |format|
-        format.html { fallback_location: root_path }
+        format.html { @post }
         format.js
       end
     end

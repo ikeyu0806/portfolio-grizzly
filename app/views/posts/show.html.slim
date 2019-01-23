@@ -17,7 +17,7 @@
     = link_to '戻る', posts_path, class: 'btn btn-large btn-green'
     #like_form
       - if current_user.present?
-        - if @post.like?(current_user)
+        - if @post.like?(current_user, @post)
           = render 'unlike'
         - else
           = render 'like'
