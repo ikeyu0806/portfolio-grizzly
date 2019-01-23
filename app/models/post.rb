@@ -18,8 +18,8 @@ class Post < ApplicationRecord
     likes.create(user_id: user.id)
   end
 
-  def unlike
-    likes.destroy(user_id: user.id)
+  def unlike(user)
+    likes.find_by(user_id: user.id).destroy
   end
 
   def like?(user, post)

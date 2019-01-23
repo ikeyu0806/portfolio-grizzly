@@ -1,2 +1,2 @@
-/= form_for(@post.likes.find_by(user_id: current_user.id), html: { method: :delete }, remote: true, authenticity_token: true) do |f|
+= form_for([@post, @post.likes.find_by(user_id: current_user.id)], html: { method: :delete }, remote: true, authenticity_token: true) do |f|
   = f.submit 'いいね！しました', class: 'btn btn-large btn-danger'
