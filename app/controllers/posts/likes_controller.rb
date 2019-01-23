@@ -6,7 +6,9 @@ module Posts
     def create
       @post.like(current_user)
       respond_to do |format|
-        format.html { @post }
+        format.html { redirect_to @post }
+        # format.html { redirect_back(fallback_location: root_path)  }
+        # format.html
         format.js
       end
     end
@@ -14,7 +16,7 @@ module Posts
     def destroy
       @post.unlike(current_user)
       respond_to do |format|
-        format.html { @post }
+        format.html { redirect_to @post }
         format.js
       end
     end
@@ -23,7 +25,7 @@ module Posts
 
     def like_params
       params.require(:like)
-        .merge(user_id: current_user.id, post_id: @post.id)
+            .merge(user_id: current_user.id, post_id: @post.id)
     end
 
     def set_post
