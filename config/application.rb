@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'boot'
 
 require 'rails/all'
@@ -14,8 +16,8 @@ module Grizzly
     config.assets.paths << Rails.root.join('vendor', 'assets', 'node_modules')
     config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
     config.assets.precompile << /\.(?:png|jpg)$/
-    config.assets.precompile += %w( base.js )
-    config.assets.precompile += %w( base.css )
+    config.assets.precompile += %w[base.js]
+    config.assets.precompile += %w[base.css]
     config.assets.precompile += ['angle/themes/theme-a.css',
                                  'angle/themes/theme-b.css',
                                  'angle/themes/theme-c.css',
@@ -23,8 +25,7 @@ module Grizzly
                                  'angle/themes/theme-e.css',
                                  'angle/themes/theme-f.css',
                                  'angle/themes/theme-g.css',
-                                 'angle/themes/theme-h.css'
-     ]
+                                 'angle/themes/theme-h.css']
     config.assets.precompile += [
       # Scripts
       'charts.js',

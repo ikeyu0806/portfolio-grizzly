@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Post < ApplicationRecord
   MAX_DISPLAY = 10
 
@@ -6,9 +8,9 @@ class Post < ApplicationRecord
   validates :content, presence: true
 
   has_many :likes, dependent:   :destroy
-  has_many :comments, dependent:   :destroy
+  has_many :comments, dependent: :destroy
 
-  has_many :post_categories, dependent:   :destroy
+  has_many :post_categories, dependent: :destroy
   has_many :categories, through: :post_categories
 
   scope :recent_posts,

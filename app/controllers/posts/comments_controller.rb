@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Posts
   class CommentsController < ApplicationController
     before_action :destroyable?, only: :destroy

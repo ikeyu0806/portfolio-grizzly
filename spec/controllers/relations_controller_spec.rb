@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe RelationsController, type: :controller do
@@ -25,6 +27,7 @@ RSpec.describe RelationsController, type: :controller do
 
   describe 'GET #destroy' do
     let!(:relation) { create(:relation) }
+
     it '正常に応答すること' do
       expect do
         delete :destroy, params: { id: relation.to_param }

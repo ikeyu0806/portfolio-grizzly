@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Setting
   class ProfileController < ApplicationController
     before_action :authenticate_user!

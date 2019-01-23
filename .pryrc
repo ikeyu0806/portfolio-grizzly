@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 begin
   require 'hirb'
 rescue LoadError
-  puts "no hirb"
+  puts 'no hirb'
 end
 
 if defined? Hirb

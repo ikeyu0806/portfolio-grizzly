@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Posts::CommentsController, type: :controller do
@@ -18,6 +20,7 @@ RSpec.describe Posts::CommentsController, type: :controller do
       before do
         sign_in comment_user
       end
+
       it 'コメントが作成されること' do
         expect do
           post :create, params: valid_attributes
@@ -46,11 +49,14 @@ RSpec.describe Posts::CommentsController, type: :controller do
         post_id: commented_post.id
       }
     end
+
     context 'ログインしている場合' do
       before do
         sign_in comment_user
       end
+
       let!(:comment) { create(:comment, user: comment_user, post: commented_post) }
+
       it 'コメントが削除されること' do
         expect do
           delete :destroy, params: delete_params
@@ -60,6 +66,7 @@ RSpec.describe Posts::CommentsController, type: :controller do
 
     context 'ログインしていない場合' do
       let!(:comment) { create(:comment, user: comment_user, post: commented_post) }
+
       it 'コメントが削除されないこと' do
         expect do
           delete :destroy, params: delete_params

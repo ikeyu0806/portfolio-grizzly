@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe TopController, type: :controller do
@@ -8,6 +10,7 @@ RSpec.describe TopController, type: :controller do
       before do
         sign_in user
       end
+
       let!(:created_posts) do
         FactoryBot.create_list(:post, 11, user: user)
       end
@@ -17,7 +20,7 @@ RSpec.describe TopController, type: :controller do
         expect(response).to have_http_status(:success)
       end
 
-      it "表示数が10であること" do
+      it '表示数が10であること' do
         get :index
         expect(assigns(:recent_posts).count).to eq 10
       end
@@ -33,7 +36,7 @@ RSpec.describe TopController, type: :controller do
         expect(response).to have_http_status(:success)
       end
 
-      it "表示数が10であること" do
+      it '表示数が10であること' do
         get :index
         expect(assigns(:recent_posts).count).to eq 10
       end
