@@ -11,7 +11,7 @@ RSpec.describe TopController, type: :controller do
         sign_in user
       end
 
-      let!(:created_posts) do
+      let(:created_posts) do
         FactoryBot.create_list(:post, 11, user: user)
       end
 
@@ -27,7 +27,7 @@ RSpec.describe TopController, type: :controller do
     end
 
     context 'ログインしていない場合' do
-      let!(:created_posts) do
+      let(:created_posts) do
         FactoryBot.create_list(:post, 11, user: user)
       end
 

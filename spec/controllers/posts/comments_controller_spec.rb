@@ -3,6 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Posts::CommentsController, type: :controller do
+  let!(:comment) { create(:comment, user: comment_user, post: commented_post) }
   let!(:post_user) { create(:user1) }
   let!(:comment_user) { create(:user2) }
   let!(:commented_post) { create(:post, user: post_user) }
@@ -55,8 +56,6 @@ RSpec.describe Posts::CommentsController, type: :controller do
         sign_in comment_user
       end
 
-      let!(:comment) { create(:comment, user: comment_user, post: commented_post) }
-
       it 'コメントが削除されること' do
         expect do
           delete :destroy, params: delete_params
@@ -65,8 +64,6 @@ RSpec.describe Posts::CommentsController, type: :controller do
     end
 
     context 'ログインしていない場合' do
-      let!(:comment) { create(:comment, user: comment_user, post: commented_post) }
-
       it 'コメントが削除されないこと' do
         expect do
           delete :destroy, params: delete_params

@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
   let!(:user) { create(:user) }
-  let!(:post) { create(:post, user: user) }
+  let(:post) { create(:post, user: user) }
 
   describe 'GET #index' do
     context 'ログインしている場合' do
