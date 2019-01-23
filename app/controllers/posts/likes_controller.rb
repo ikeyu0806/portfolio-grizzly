@@ -7,8 +7,6 @@ module Posts
       @post.like(current_user)
       respond_to do |format|
         format.html { redirect_to @post }
-        # format.html { redirect_back(fallback_location: root_path)  }
-        # format.html
         format.js
       end
     end
