@@ -10,7 +10,20 @@ class Post < ApplicationRecord
 
   has_many :post_categories, dependent:   :destroy
   has_many :categories, through: :post_categories
+  has_many :like_users, through: :likes, source: :user
 
   scope :recent_posts,
         -> { order(created_at: :desc).limit(MAX_DISPLAY) }
+
+  def like(user)
+    likes.create(user_id: user.id)
+  end
+
+  def unlike
+    likes.destroy(user_id: user.id)
+  end
+
+  def like?(user)
+    like_users.include?(user)
+  end
 end

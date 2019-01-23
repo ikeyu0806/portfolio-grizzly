@@ -15,6 +15,12 @@
     - if current_user.present? && @post.user == current_user
       = link_to '記事を編集する', edit_post_path(@post), class: 'btn btn-large btn-primary'
     = link_to '戻る', posts_path, class: 'btn btn-large btn-green'
+    #like_form
+      - if current_user.present?
+        - if @post.like?(current_user)
+          = render 'unlike'
+        - else
+          = render 'like'
 .card
   strong コメント一覧
   .card-body
