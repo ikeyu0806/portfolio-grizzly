@@ -5,6 +5,10 @@ nav.navbar.topnavbar.bg-primary
     - if user_signed_in?
       = link_to user_path(current_user) do
         = image_tag current_user.avatar.url, width:'25', height: '25', class: 'rounded-circle'
+      | &nbsp;
+      | &nbsp;
+      | &nbsp;
+      | &nbsp;
       = current_user.name
   .text-right
     - if user_signed_in?

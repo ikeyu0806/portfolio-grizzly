@@ -21,4 +21,12 @@ FactoryBot.define do
     password 'password'
     password_confirmation 'password'
   end
+
+  factory :user3, class: User do
+    id 3
+    name 'user3'
+    email 'user3@email.com'
+    password 'password'
+    password_confirmation 'password'
+  end
 end

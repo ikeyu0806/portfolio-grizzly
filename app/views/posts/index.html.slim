@@ -17,5 +17,5 @@
             td
               = post.created_at
       br
-      - if current_user.present?
-        = link_to 'New Post', new_post_path
+    - if current_user.present?
+      = link_to 'New Post', new_post_path, class: 'btn btn-large btn-primary'
