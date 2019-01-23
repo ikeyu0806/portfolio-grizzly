@@ -43,14 +43,12 @@ RSpec.describe Setting::ProfileController, type: :controller do
 
       it '想定通りに更新されること' do
         put :update, params: { user: user, setting_profile_edit_form: new_form_params }
-        user_attributes = { profile: new_form_params[:profile] }
         user.reload
-        expect(user).to have_attributes(user_attributes)
+        expect(user.profile).to eq 'new_profile'
       end
 
       it '画像が想定通りに更新されること' do
         put :update, params: { user: user, setting_profile_edit_form: new_form_params }
-        user_attributes = { profile: new_form_params[:profile] }
         user.reload
         expect(user.avatar.url).to eq "/uploads/user/avatar/#{user.id}/icon.jpg"
       end
