@@ -4,7 +4,6 @@ require 'rails_helper'
 
 RSpec.describe RelationsController, type: :controller do
   let!(:user1) { create(:user1) }
-  let!(:user2) { create(:user2) }
   let(:create_params) do
     {
       relation: {
@@ -15,6 +14,7 @@ RSpec.describe RelationsController, type: :controller do
 
   before do
     sign_in user1
+    create(:user2)
   end
 
   describe 'GET #create' do

@@ -2,7 +2,9 @@
 
 class AddNameToUser < ActiveRecord::Migration[5.2]
   def change
-    add_column :users, :name, :string, null: false
-    add_index :users, :name, unique: true
+    change_table :users, bulk: true do |t|
+      t.add_column :name, :string, null: false
+      t.add_index :name, unique: true
+    end
   end
 end
