@@ -13,12 +13,18 @@ nav.navbar.topnavbar.bg-primary
   .text-right
     - if user_signed_in?
       = link_to destroy_user_session_path, method: :delete do
-        em.fa-2x.icon-logout.mr-2.fa-lg
-        span logout
+        = button_tag '<i class="fa icon-logout mr-2"></i>ログアウト'.html_safe,
+        type: "submit",
+        class: 'btn btn-small btn-outline-inverse'
+        | &nbsp;
+        | &nbsp;
       end
 
     - else
         = link_to new_user_session_path, method: :get do
-          em.fa-2x.icon-login.mr-2.fa-lg
-          span login
+          = button_tag '<i class="fa icon-login mr-2"></i>ログイン'.html_safe,
+          type: "submit",
+          class: 'btn btn-small btn-outline-inverse'
+          | &nbsp;
+          | &nbsp;
         end
