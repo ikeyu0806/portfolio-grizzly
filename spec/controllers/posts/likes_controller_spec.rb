@@ -7,12 +7,12 @@ RSpec.describe Posts::LikesController, type: :controller do
   let!(:like_user) { create(:user2) }
   let!(:liked_user) { create(:user3) }
   let!(:liked_post) { create(:post, user: post_user) }
-  let!(:like) { create(:like, post: liked_post, user: like_user) }
+  let!(:like) { create(:like, post: liked_post, user: liked_user) }
   let(:create_params) do
     {
       post_id: liked_post.id,
       like: {
-        user: liked_user,
+        user: like_user,
         post: liked_post
       }
     }
@@ -20,7 +20,7 @@ RSpec.describe Posts::LikesController, type: :controller do
 
   describe 'GET #create' do
     before do
-      sign_in liked_user
+      sign_in like_user
     end
 
     it '正常に応答すること' do
@@ -32,14 +32,14 @@ RSpec.describe Posts::LikesController, type: :controller do
 
   describe 'GET #destroy' do
     before do
-      sign_in like_user
+      sign_in liked_user
     end
 
     let(:delete_params) do
       {
         id: like.id,
         post_id: liked_post.id,
-        user_id: like_user.id
+        user_id: liked_user.id
       }
     end
 
