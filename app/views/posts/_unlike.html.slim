@@ -1,2 +1,2 @@
 = form_for([@post, @post.likes.find_by(user_id: current_user.id)], html: { method: :delete }, remote: true, authenticity_token: true) do |f|
-  = button_tag '<i class="fa-2x icon-dislike mr-2"></i>いいねを取り消す'.html_safe, type: "submit", class: 'btn btn-small btn-danger'
+  = button_tag '<i class="fa icon-dislike mr-2"></i>いいねを取り消す'.html_safe, type: "submit", class: 'btn btn-small btn-danger'
