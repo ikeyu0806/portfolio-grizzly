@@ -23,7 +23,7 @@
           = link_to '記事を編集する', edit_post_path(@post), class: 'btn btn-large btn-primary'
         - else
           #like_form
-            - if @post.like?(current_user, @post)
+            - if @post.like?(current_user)
               = render 'unlike'
             - else
               = render 'like'
