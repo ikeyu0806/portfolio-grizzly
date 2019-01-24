@@ -11,6 +11,10 @@ nav.navbar.topnavbar.bg-primary
       | &nbsp;
       = current_user.name
   .text-right
+    - if current_user.present?
+      = link_to '記事を投稿する', new_post_path, class: 'btn btn-small btn-outline-inverse'
+      | &nbsp;
+      | &nbsp;
     - if user_signed_in?
       = link_to destroy_user_session_path, method: :delete do
         = button_tag '<i class="fa icon-logout mr-2"></i>ログアウト'.html_safe,
@@ -28,3 +32,4 @@ nav.navbar.topnavbar.bg-primary
           | &nbsp;
           | &nbsp;
         end
+
