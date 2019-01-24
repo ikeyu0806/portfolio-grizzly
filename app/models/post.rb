@@ -24,7 +24,6 @@ class Post < ApplicationRecord
     likes.find_by(user_id: user.id).destroy
   end
 
-  # 一旦これで
   def like?(user, post)
     Like.find_by(user_id: user.id, post_id: post.id)
   end
