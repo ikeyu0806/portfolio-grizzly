@@ -21,7 +21,8 @@ class Post < ApplicationRecord
   end
 
   def unlike(user)
-    likes.find_by(user_id: user.id).destroy
+    like = likes.find_by(user_id: user.id)
+    like.destroy if like.present?
   end
 
   def like?(user, post)
