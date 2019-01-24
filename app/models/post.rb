@@ -25,8 +25,8 @@ class Post < ApplicationRecord
     like.destroy if like.present?
   end
 
-  def like?(user, post)
-    Like.find_by(user_id: user.id, post_id: post.id)
+  def like?(user)
+    likes.exists?(user_id: user.id)
   end
 
   def post_user?(current_user)

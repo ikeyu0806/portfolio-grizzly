@@ -38,11 +38,29 @@ RSpec.describe Post, type: :model do
 
   describe 'post_user?メソッドの確認' do
     it '記事を書いたユーザに対してtrueが返ること' do
-      expect(user_post.post_user?(post_user)).to be true
+      expect(user_post).to be_post_user(post_user)
     end
 
     it '記事を書いていないユーザに対してfalseが返ること' do
-      expect(user_post.post_user?(login_user)).to be false
+      expect(user_post).not_to be_post_user(login_user)
+    end
+  end
+
+  describe 'like?メソッドの確認' do
+    context 'いいねを押したユーザの場合' do
+      before do
+        create(:like, post: user_post, user: login_user)
+      end
+
+      it 'trueが返ること' do
+        expect(user_post).to be_like(login_user)
+      end
+    end
+
+    context '無関係なユーザの場合' do
+      it 'falseが返る' do
+        expect(user_post).not_to be_like(login_user)
+      end
     end
   end
 end
