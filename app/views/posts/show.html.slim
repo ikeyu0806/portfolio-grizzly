@@ -16,7 +16,7 @@
       = link_to '記事を編集する', edit_post_path(@post), class: 'btn btn-large btn-primary'
     = link_to '戻る', posts_path, class: 'btn btn-large btn-green'
     #like_form
-      - if current_user.present?
+      - if current_user.present? && !(@post.post_user?(current_user))
         - if @post.like?(current_user, @post)
           = render 'unlike'
         - else
