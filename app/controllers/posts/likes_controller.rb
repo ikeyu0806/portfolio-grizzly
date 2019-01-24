@@ -3,7 +3,7 @@
 module Posts
   class LikesController < ApplicationController
     before_action :authenticate_user!
-    before_action :set_post
+    before_action :post_user?
 
     def create
       @post.like(current_user)
@@ -28,8 +28,9 @@ module Posts
             .merge(user_id: current_user.id, post_id: @post.id)
     end
 
-    def set_post
+    def post_user?
       @post = Post.find(params[:post_id])
+      head :forbidden if @post.post_user?(current_user)
     end
   end
 end

@@ -27,4 +27,8 @@ class Post < ApplicationRecord
   def like?(user, post)
     Like.find_by(user_id: user.id, post_id: post.id)
   end
+
+  def post_user?(current_user)
+    user == current_user
+  end
 end
