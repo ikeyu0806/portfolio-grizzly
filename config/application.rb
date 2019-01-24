@@ -9,7 +9,6 @@ Bundler.require(*Rails.groups)
 module Grizzly
   class Application < Rails::Application
     config.load_defaults 5.2
-    config.autoload_paths << "Rails.root.join('/app/uploaders')"
 
     # angle setting
     config.assets.paths << Rails.root.join('vendor', 'assets', 'node_modules')
