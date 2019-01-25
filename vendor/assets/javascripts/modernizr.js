@@ -24,7 +24,7 @@
 
 ;(function(window, document, undefined){
   var tests = [];
-
+  
 
   /**
    *
@@ -73,7 +73,7 @@
     }
   };
 
-
+  
 
   // Fake some of Object.create so we can force non test results to be non "own" properties.
   var Modernizr = function() {};
@@ -83,10 +83,10 @@
   // Overwrite name so constructor name is nicer :D
   Modernizr = new Modernizr();
 
-
+  
 
   var classes = [];
-
+  
 
   /**
    * is returns a boolean if the typeof an obj is exactly type.
@@ -181,7 +181,7 @@
    */
 
   var docElement = document.documentElement;
-
+  
 
   /**
    * A convenience helper to check if the document we are running in is an SVG document
@@ -191,7 +191,7 @@
    */
 
   var isSVG = docElement.nodeName.toLowerCase() === 'svg';
-
+  
 
   /**
    * setClasses takes an array of class names and adds them to the root element
@@ -307,11 +307,11 @@ eg `background-position: right 10px bottom 10px`
    */
 
   var omPrefixes = 'Moz O ms Webkit';
-
+  
 
   var cssomPrefixes = (ModernizrProto._config.usePrefixes ? omPrefixes.split(' ') : []);
   ModernizrProto._cssomPrefixes = cssomPrefixes;
-
+  
 
 
   /**
@@ -345,7 +345,7 @@ eg `background-position: right 10px bottom 10px`
     delete modElem.elem;
   });
 
-
+  
 
   var mStyle = {
     style: modElem.elem.style
@@ -357,7 +357,7 @@ eg `background-position: right 10px bottom 10px`
     delete mStyle.style;
   });
 
-
+  
 
   /**
    * getBody returns the body of a document, or an element that can stand in for
@@ -686,7 +686,7 @@ eg `background-position: right 10px bottom 10px`
 
   var domPrefixes = (ModernizrProto._config.usePrefixes ? omPrefixes.toLowerCase().split(' ') : []);
   ModernizrProto._domPrefixes = domPrefixes;
-
+  
 
   /**
    * fnBind is a super small [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) polyfill.
@@ -783,7 +783,7 @@ eg `background-position: right 10px bottom 10px`
   // Modernizr.testAllProps('boxSizing')
   ModernizrProto.testAllProps = testPropsAll;
 
-
+  
 
   /**
    * testAllProps determines whether a given CSS property is supported in the browser
@@ -826,7 +826,7 @@ eg `background-position: right 10px bottom 10px`
     return testPropsAll(prop, undefined, undefined, value, skipValueTest);
   }
   ModernizrProto.testAllProps = testAllProps;
-
+  
 /*!
 {
   "name": "Background Position XY",
@@ -970,7 +970,7 @@ Detects whether or not elements can be animated using CSS
   // expose these for the plugin API. Look in the source for how to join() them against your input
   ModernizrProto._prefixes = prefixes;
 
-
+  
 /*!
 {
   "name": "CSS Calc",
@@ -1187,7 +1187,7 @@ Detects support for `transform-style: preserve-3d`, for getting a proper 3D pers
    */
 
   var testStyles = ModernizrProto.testStyles = injectElementWithStyles;
-
+  
 /*!
 {
   "name": "@font-face",
@@ -1292,7 +1292,7 @@ Detects support for SVG in `<embed>` or `<object>` elements.
     }
   })();
 
-
+  
 
 
    // _l tracks listeners for async tests, as well as tests that execute after the initial run
@@ -1499,7 +1499,7 @@ Detects support for SVG in `<embed>` or `<object>` elements.
     ModernizrProto.addTest = addTest;
   });
 
-
+  
 
 /*!
 {
@@ -1540,7 +1540,7 @@ Detects support for SVG in `<embed>` or `<object>` elements.
    */
 
   var toStringFn = ({}).toString;
-
+  
 /*!
 {
   "name": "SVG clip paths",
