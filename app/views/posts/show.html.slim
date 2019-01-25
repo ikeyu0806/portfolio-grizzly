@@ -1,88 +1,72 @@
-= javascript_pack_tag 'markdown_form'
-#hello
-  | {{ message }}
-  app
-// import Vue from 'vue/dist/vue.esm'
-// import App from '../app.vue'
-//
-// document.addEventListener('DOMContentLoaded', () => {
-//   const app = new Vue({
-//     el: '#hello',
-//     data: {
-//       message: "Can you say hello?"
-//     },
-//     components: { App }
-//   })
-// })
-/ .card
-/   .card-default.card-body
-/     p#notice = notice
-/     strong この記事を書いたユーザ
-/     br
-/       = link_to  @post.user.name, user_path(@post.user)
-/     br
-/     strong タイトル
-/     .mb-3.form-control.form-control-lg
-/       = @post.title
-/     strong 記事
-/     div
-/       .form-control.wysiwyg.mt-3  style="height:250px; max-height:500px;"
-/         = @post.content
-/       .row
-/         | &nbsp;
-/         | &nbsp;
-/         | &nbsp;
-/         | &nbsp;
-/         | &nbsp;
-/         | &nbsp;
-/         - if current_user.present? && @post.user == current_user
-/           = link_to '記事を編集する', edit_post_path(@post), class: 'btn btn-large btn-primary'
-/         - else
-/           #like_form
-/             - if @post.like?(current_user, @post)
-/               = render 'unlike'
-/             - else
-/               = render 'like'
-/         | &nbsp;
-/         | &nbsp;
-/         | &nbsp;
-/         = link_to '戻る', posts_path, class: 'btn btn-large btn-green'
-/ .card
-/   strong コメント一覧
-/   .card-body
-/       - @post.comments.each do |comment|
-/         .list-group
-/           .list-group-item
-/             .row.col-sm-10
-/               .media
-/                 = link_to user_path(comment.user) do
-/                   = image_tag comment.user.avatar.url, width:'50', height: '50', class: 'rounded-circle'
-/                 | &nbsp;
-/                 | &nbsp;
-/                 | &nbsp;
-/                 | &nbsp;
-/                 | &nbsp;
-/               .media-body
-/                 .row.col-sm-10
-/                   h5
-/                     = link_to  comment.user.name, user_path(comment.user)
-/                   | &nbsp;
-/                   | &nbsp;
-/                   small
-/                     = comment.updated_at
-/                 h3
-/                   = comment.content
-/                 br
-/                 p
-/                   - if comment.destroyable?(current_user)
-/                     = link_to '削除する', post_comment_path(@post, comment), method: :delete, class: 'btn btn-danger btn-xs'
-/ - if current_user.present?
-/   .card
-/     .card-body
-/       strong コメントする
-/       = form_for [@post, @comment] do |f|
-/         = f.text_field :content, class: 'mb-3 form-control form-control-lg'
-/         = f.hidden_field :user_id, value: current_user.id
-/         = f.hidden_field :post_id, value: @post.id
-/         br
-/           = f.submit 'コメントする', class: 'btn btn-large btn-primary'
+.card
+  .card-default.card-body
+    p#notice = notice
+    strong この記事を書いたユーザ
+    br
+      = link_to  @post.user.name, user_path(@post.user)
+    br
+    strong タイトル
+    .mb-3.form-control.form-control-lg
+      = @post.title
+    strong 記事
+    div
+      .form-control.wysiwyg.mt-3  style="height:250px; max-height:500px;"
+        = @post.content
+      .row
+        | &nbsp;
+        | &nbsp;
+        | &nbsp;
+        | &nbsp;
+        | &nbsp;
+        | &nbsp;
+        - if current_user.present? && @post.user == current_user
+          = link_to '記事を編集する', edit_post_path(@post), class: 'btn btn-large btn-primary'
+        - else
+          #like_form
+            - if @post.like?(current_user)
+              = render 'unlike'
+            - else
+              = render 'like'
+        | &nbsp;
+        | &nbsp;
+        | &nbsp;
+        = link_to '戻る', posts_path, class: 'btn btn-large btn-green'
+.card
+  strong コメント一覧
+  .card-body
+      - @post.comments.each do |comment|
+        .list-group
+          .list-group-item
+            .row.col-sm-10
+              .media
+                = link_to user_path(comment.user) do
+                  = image_tag comment.user.avatar.url, width:'50', height: '50', class: 'rounded-circle'
+                | &nbsp;
+                | &nbsp;
+                | &nbsp;
+                | &nbsp;
+                | &nbsp;
+              .media-body
+                .row.col-sm-10
+                  h5
+                    = link_to  comment.user.name, user_path(comment.user)
+                  | &nbsp;
+                  | &nbsp;
+                  small
+                    = comment.updated_at
+                h3
+                  = comment.content
+                br
+                p
+                  - if comment.destroyable?(current_user)
+                    = link_to '削除する', post_comment_path(@post, comment), method: :delete, class: 'btn btn-danger btn-xs'
+- if current_user.present?
+  .card
+    .card-body
+      strong コメントする
+      = form_for [@post, @comment] do |f|
+        = f.text_field :content, class: 'mb-3 form-control form-control-lg'
+        = f.hidden_field :user_id, value: current_user.id
+        = f.hidden_field :post_id, value: @post.id
+        br
+          = f.submit 'コメントする', class: 'btn btn-large btn-primary'
