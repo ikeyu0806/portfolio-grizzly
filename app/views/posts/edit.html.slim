@@ -1,9 +1,9 @@
-= javascript_pack_tag 'markdown_form'
+/ = javascript_pack_tag 'markdown_form'
 
 #editor
-  textarea :value=""
+  textarea :value="" @input="update"
+  v-html="compiledMarkdown"
 
 #hello
   | {{ message }}
   app
-
