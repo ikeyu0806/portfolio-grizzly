@@ -12,9 +12,25 @@
     div
       .form-control.wysiwyg.mt-3  style="height:250px; max-height:500px;"
         = @post.content
-    - if current_user.present? && @post.user == current_user
-      = link_to '記事を編集する', edit_post_path(@post), class: 'btn btn-large btn-primary'
-    = link_to '戻る', posts_path, class: 'btn btn-large btn-green'
+      .row
+        | &nbsp;
+        | &nbsp;
+        | &nbsp;
+        | &nbsp;
+        | &nbsp;
+        | &nbsp;
+        - if current_user.present? && @post.user == current_user
+          = link_to '記事を編集する', edit_post_path(@post), class: 'btn btn-large btn-primary'
+        - else
+          #like_form
+            - if @post.like?(current_user)
+              = render 'unlike'
+            - else
+              = render 'like'
+        | &nbsp;
+        | &nbsp;
+        | &nbsp;
+        = link_to '戻る', posts_path, class: 'btn btn-large btn-green'
 .card
   strong コメント一覧
   .card-body

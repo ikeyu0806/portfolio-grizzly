@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -5,13 +7,15 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   mount_uploader :avatar, AvatarUploader
 
-  has_many :active_relationships, class_name:  :Relation,
+  has_many :active_relationships, class_name: :Relation,
                                   foreign_key: :follower_id,
-                                  dependent:   :destroy
+                                  dependent: :destroy,
+                                  inverse_of: :follower
 
-  has_many :passive_relationships, class_name:  :Relation,
+  has_many :passive_relationships, class_name: :Relation,
                                    foreign_key: :follow_id,
-                                   dependent:   :destroy
+                                   dependent: :destroy,
+                                   inverse_of: :followed
 
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower

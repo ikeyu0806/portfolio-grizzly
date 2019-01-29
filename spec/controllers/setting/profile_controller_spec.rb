@@ -1,13 +1,16 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Setting::ProfileController, type: :controller do
-  let!(:user) { create(:user) }
+  let(:user) { create(:user) }
 
   describe 'GET #edit' do
     context 'ログインしている場合' do
       before do
         sign_in user
       end
+
       it '正常に応答すること' do
         get :edit, params: { id: user.to_param }
         expect(response).to be_successful
@@ -32,19 +35,24 @@ RSpec.describe Setting::ProfileController, type: :controller do
         avatar: uploaded_file
       }
     end
+
     context 'ログインしている場合' do
       before do
         sign_in user
       end
+
       it '想定通りに更新されること' do
         put :update, params: { user: user, setting_profile_edit_form: new_form_params }
         user.reload
-        user_attributes = {
-          profile: new_form_params[:profile]
-        }
-        expect(user).to have_attributes(user_attributes)
+        expect(user.profile).to eq 'new_profile'
+      end
+
+      it '画像が想定通りに更新されること' do
+        put :update, params: { user: user, setting_profile_edit_form: new_form_params }
+        user.reload
         expect(user.avatar.url).to eq "/uploads/user/avatar/#{user.id}/icon.jpg"
       end
+
       it '設定ページに遷移すること' do
         put :update, params: { user: user, setting_profile_edit_form: new_form_params }
         expect(response).to redirect_to edit_setting_profile_path

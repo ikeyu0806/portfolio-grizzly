@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   config.webpacker.check_yarn_integrity = false
   config.cache_classes = true

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe PostsController, type: :controller do
@@ -40,6 +42,7 @@ RSpec.describe PostsController, type: :controller do
       before do
         sign_in user
       end
+
       it '正常に応答すること' do
         get :new, params: {}
         expect(response).to be_successful
@@ -59,6 +62,7 @@ RSpec.describe PostsController, type: :controller do
       before do
         sign_in user
       end
+
       it '正常に応答すること' do
         post = Post.create! valid_attributes
         get :edit, params: { id: post.to_param }
@@ -80,6 +84,7 @@ RSpec.describe PostsController, type: :controller do
       before do
         sign_in user
       end
+
       context '正常なパラメータの場合' do
         it '記事を作成できること' do
           expect do
@@ -94,7 +99,7 @@ RSpec.describe PostsController, type: :controller do
       end
 
       context '不正なパラメータの場合' do
-        it "正常に応答すること" do
+        it '正常に応答すること' do
           post :create, params: { post: invalid_attributes }
           expect(response).to be_successful
         end
@@ -114,6 +119,7 @@ RSpec.describe PostsController, type: :controller do
       before do
         sign_in user
       end
+
       context '正常なパラメータの場合' do
         let(:new_attributes) do
           {
@@ -121,6 +127,7 @@ RSpec.describe PostsController, type: :controller do
             content: 'new_content'
           }
         end
+
         it '想定通りに更新されること' do
           post = Post.create! valid_attributes
           put :update, params: { id: post.to_param, post: new_attributes }
@@ -133,8 +140,9 @@ RSpec.describe PostsController, type: :controller do
           expect(response).to redirect_to(post)
         end
       end
+
       context '不正なパラメータの場合' do
-        it "正常に応答すること" do
+        it '正常に応答すること' do
           post = Post.create! valid_attributes
           put :update, params: { id: post.to_param, post: invalid_attributes }
           expect(response).to be_successful
@@ -149,6 +157,7 @@ RSpec.describe PostsController, type: :controller do
           content: 'new_content'
         }
       end
+
       it 'ログイン画面に遷移すること' do
         post = Post.create! valid_attributes
         put :update, params: { id: post.to_param, post: valid_attributes }
@@ -162,6 +171,7 @@ RSpec.describe PostsController, type: :controller do
       before do
         sign_in user
       end
+
       it '記事が削除されること' do
         post = Post.create! valid_attributes
         expect do

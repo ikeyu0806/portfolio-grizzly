@@ -1,58 +1,60 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
-gem 'rails', '~> 5.2.2'
-gem 'puma', '~> 3.11'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'carrierwave'
+gem 'devise'
+gem 'file_validators'
+gem 'jbuilder', '~> 2.5'
+gem 'jquery-rails'
+gem 'mysql2'
+gem 'puma', '~> 3.11'
+gem 'rails', '~> 5.2.2'
+gem 'sass-rails', '~> 5.0'
 gem 'slim', '3.0.9'
 gem 'slim-rails'
-gem 'mysql2'
-gem 'devise'
-gem 'carrierwave'
+gem 'uglifier', '>= 1.3.0'
 gem 'virtus'
-gem 'file_validators'
 gem 'webpacker'
-gem 'jquery-rails'
 
 group :development, :test do
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rspec-rails'
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
-  gem 'hirb'
-  gem 'hirb-unicode'
   gem 'guard', require: false
-  gem 'guard-rspec', require: false
-  gem 'guard-rubocop', require: false
   gem 'guard-brakeman', require: false
+  gem 'guard-foreman', require: false
   gem 'guard-livereload', require: false
   gem 'guard-rails', require: false
-  gem 'guard-foreman', require: false
+  gem 'guard-rspec', require: false
+  gem 'guard-rubocop', require: false
+  gem 'hirb'
+  gem 'hirb-unicode-steakknife'
+  gem 'rspec-rails'
 end
 
 group :development do
-  gem 'web-console', '>= 3.3.0'
+  gem 'foreman'
+  gem 'html2slim'
   gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rubocop', require: false
   gem 'rubocop-rspec', require: false
   gem 'slim_lint', require: false
-  gem 'html2slim'
-  gem 'foreman'
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'web-console', '>= 3.3.0'
 end
 
 group :test do
   gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
   gem 'chromedriver-helper'
-  gem 'shoulda-matchers', github: 'thoughtbot/shoulda-matchers'
   gem 'rails-controller-testing'
   gem 'rubocop-checkstyle_formatter', require: false
+  gem 'selenium-webdriver'
+  gem 'shoulda-matchers', github: 'thoughtbot/shoulda-matchers'
 end
 
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

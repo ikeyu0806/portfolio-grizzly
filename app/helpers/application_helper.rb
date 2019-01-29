@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   def controller?(*controller)
     controller.include?(params[:controller])
