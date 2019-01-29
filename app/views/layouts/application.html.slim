@@ -10,11 +10,8 @@ html
     = stylesheet_link_tag    'application', media: 'all', id: 'maincss'
     = stylesheet_link_tag 'angle/themes/theme-f'
     = yield :vendor_css_area
-    = javascript_pack_tag params[:controller]
-    = javascript_include_tag 'application'
-    = javascript_include_tag 'base'
-    = favicon_link_tag 'kuma_favicon.png'
-  body
+    / = javascript_pack_tag params[:controller]
+  body id=params[:action]
     .wrapper
       header.topnavbar-wrapper
         = render 'layouts/partial/header'
@@ -25,7 +22,10 @@ html
           = yield
       footer.footer-container
         = render 'layouts/partial/footer'
+= javascript_pack_tag 'posts'
+= javascript_include_tag 'application'
 = javascript_include_tag 'base'
-/= javascript_include_tag params[:controller]
+= favicon_link_tag 'kuma_favicon.png'
+= javascript_include_tag 'base'
 = yield :vendor_js_area
 = yield :body_area
