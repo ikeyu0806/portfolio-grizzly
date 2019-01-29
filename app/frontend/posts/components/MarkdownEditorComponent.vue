@@ -7,14 +7,18 @@ import marked from 'marked';
 import _ from 'lodash';
 
 export default {
-  template: '<div>hello</div>',
-  mounted: function () {
-    console.log("マウントされたよ");
-  },
-  // el: '#editor',
-  name: 'vue-test',
   data: {
-      testVal: 'Hello World!'
+    input: '# hello'
+  },
+  computed: {
+    compiledMarkdown: function () {
+      return marked(this.input, { sanitize: true })
+    }
+  },
+  methods: {
+    update: _.debounce(function (e) {
+      this.input = e.target.value
+    }, 300)
   }
 };
 </script>
