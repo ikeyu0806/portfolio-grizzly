@@ -10,7 +10,6 @@
       strong Title
       br
       = f.text_field :title, class: 'mb-3 form-control form-control-lg'
-      markdown-editor-component
       textarea :value="input" @input="update"
       div v-html="compiledMarkdown"
       div

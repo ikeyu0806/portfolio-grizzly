@@ -1,13 +1,9 @@
-import MarkdownEditorComponent from './components/MarkdownEditorComponent';
 import marked from 'marked';
 import _ from 'lodash';
 
 export default {
   data: {
     input: '# hello'
-  },
-  components: {
-    MarkdownEditorComponent
   },
   computed: {
     compiledMarkdown: function () {
