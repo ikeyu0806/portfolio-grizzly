@@ -18,7 +18,6 @@ export default class Dispatcher {
 
     this.handlers.forEach((handler) => {
       const element = document.querySelector(Dispatcher.SELECTORS[handler.route]);
-      // const element = document.querySelector('#edit');
       if (element) {
         root = element.querySelector('section');
         options = handler.options; // eslint-disable-line prefer-destructuring

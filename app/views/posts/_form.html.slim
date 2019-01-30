@@ -12,6 +12,7 @@
       = f.text_field :title, class: 'mb-3 form-control form-control-lg'
       textarea :value="input" @input="update"
       div v-html="compiledMarkdown"
+      markdown-editor-component
       div
         = f.text_area :content, class: 'form-control wysiwyg mt-3', style: "height:250px; max-height:250px;", value: "input"
       .actions
