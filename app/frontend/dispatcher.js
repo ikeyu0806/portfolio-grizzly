@@ -1,4 +1,7 @@
 import Vue from 'vue';
+import VueAssignModel from 'vue-assign-model';
+
+Vue.use(VueAssignModel)
 
 export default class Dispatcher {
   constructor(options = {}) {

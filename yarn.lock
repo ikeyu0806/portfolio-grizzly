@@ -2429,6 +2429,13 @@ es-to-primitive@^1.2.0:
     is-date-object "^1.0.1"
     is-symbol "^1.0.2"
 
+es5-dot-prop@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/es5-dot-prop/-/es5-dot-prop-4.1.1.tgz#72102153eabb3740d66b735da616e2dd9be5737b"
+  integrity sha512-h93Ud8rM30T8WeezPo6ml1Xa9FLsQ41hs/n09PsLc2SQ4hXBh51s0rsh2Ckv2f7rzUIBDnLQMm4809cuBagDFg==
+  dependencies:
+    is-obj "^1.0.0"
+
 es5-ext@^0.10.14, es5-ext@^0.10.35, es5-ext@^0.10.9, es5-ext@~0.10.14:
   version "0.10.46"
   resolved "https://registry.yarnpkg.com/es5-ext/-/es5-ext-0.10.46.tgz#efd99f67c5a7ec789baa3daa7f79870388f7f572"
@@ -3765,6 +3772,11 @@ is-number@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/is-number/-/is-number-4.0.0.tgz#0026e37f5454d73e356dfe6564699867c6a7f0ff"
   integrity sha512-rSklcAIlf1OmFdyAqbnWTLVelsQ58uvZ66S/ZyawjWqIviTWCjg2PzVGw8WUA+nNuPTqb4wgA+NszrJ+08LlgQ==
+
+is-obj@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/is-obj/-/is-obj-1.0.1.tgz#3e4729ac1f5fde025cd7d83a896dab9f4f67db0f"
+  integrity sha1-PkcprB9f3gJc19g6iW2rn09n2w8=
 
 is-path-cwd@^1.0.0:
   version "1.0.0"
@@ -7546,6 +7558,13 @@ vm-browserify@0.0.4:
   integrity sha1-XX6kW7755Kb/ZflUOOCofDV9WnM=
   dependencies:
     indexof "0.0.1"
+
+vue-assign-model@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/vue-assign-model/-/vue-assign-model-1.0.0.tgz#04a7cd889b92c3f3a1c304a2c51fff0ee1383e58"
+  integrity sha1-BKfNiJuSw/OhwwSixR//DuE4Plg=
+  dependencies:
+    es5-dot-prop "^4.1.1"
 
 vue-hot-reload-api@^2.3.0:
   version "2.3.1"

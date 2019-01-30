@@ -3,7 +3,7 @@ import _ from 'lodash';
 
 export default {
   data: {
-    input: '# hello'
+    input: post
   },
   computed: {
     compiledMarkdown: function () {

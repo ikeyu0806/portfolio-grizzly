@@ -11,8 +11,10 @@
       br
       = f.text_field :title, class: 'mb-3 form-control form-control-lg'
       textarea :value="input" @input="update"
-      div v-html="compiledMarkdown"
-      div
-        = f.text_area :content, class: 'form-control wysiwyg mt-3', style: "height:250px; max-height:250px;", value: "input"
+      div data-vue-model="#{{ post: @post.content }.to_json}"
+        /= f.text_area :content, class: 'form-control wysiwyg mt-3', style: "height:250px; max-height:250px;", value: "input"
+        = f.text_area :content, ':value': "input", 'v-on:input': "update"
+        / v-model="input"
+        div v-html="compiledMarkdown"
       .actions
         = f.submit '送信する', class: 'btn btn-large btn-primary'
