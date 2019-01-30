@@ -1,5 +1,6 @@
 <template>
-  <p>Hello!</p>
+  <div>
+  </div>
 </template>
 
 <script>
@@ -7,16 +8,9 @@ import marked from 'marked';
 import _ from 'lodash';
 
 export default {
-  // data: {
-  //   message: 'test',
-  //   input: '# hello'
-  // },
-  // data() {
-  //   return {
-  //     message: 'Hello'
-  //   }
-  // },
-
+  data: {
+    input: '# hello'
+  },
   computed: {
     compiledMarkdown: function () {
       return marked(this.input, { sanitize: true })
