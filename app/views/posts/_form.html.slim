@@ -11,9 +11,7 @@
       br
       = f.text_field :title, class: 'mb-3 form-control form-control-lg'
       div data-vue-model="#{{ post: @post.content }.to_json}"
-        /= f.text_area :content, class: 'form-control wysiwyg mt-3', style: "height:250px; max-height:250px;", value: "input"
         = f.text_area :content, "v-model": "post"
-        / v-model="input"
-        div v-html="compiledMarkdown"
+        markdown-component(v-bind:value="post")
       .actions
         = f.submit '送信する', class: 'btn btn-large btn-primary'
