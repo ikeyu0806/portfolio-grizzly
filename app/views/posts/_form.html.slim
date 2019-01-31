@@ -10,9 +10,11 @@
       strong Title
       br
       = f.text_field :title, class: 'mb-3 form-control form-control-lg'
-      div data-vue-model="#{{ post: @post.content }.to_json}"
-        = f.text_area :content, "v-model": "post"
-        / markdown-component(v-bind:value="post")
-        markdown-component(v-model="post")
+      form.form-inline
+        .form-group
+          div data-vue-mozdel="#{{ post: @post.content }.to_json}"
+          = f.text_area :content, "v-model": "post", class: "form-control wysiwyg mt-3", style: "height:250px; max-height:500px;"
+        .form-group
+          markdown-component(v-model="post")
       .actions
         = f.submit '送信する', class: 'btn btn-large btn-primary'
