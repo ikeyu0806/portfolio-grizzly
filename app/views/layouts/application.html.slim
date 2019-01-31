@@ -22,7 +22,8 @@ html
           = yield
       footer.footer-container
         = render 'layouts/partial/footer'
-= javascript_pack_tag 'posts'
+/ = javascript_pack_tag 'posts'
+= javascript_pack_tag params[:controller]
 = javascript_include_tag 'application'
 = javascript_include_tag 'base'
 = favicon_link_tag 'kuma_favicon.png'
