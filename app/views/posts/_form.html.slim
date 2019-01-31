@@ -12,6 +12,7 @@
       = f.text_field :title, class: 'mb-3 form-control form-control-lg'
       div data-vue-model="#{{ post: @post.content }.to_json}"
         = f.text_area :content, "v-model": "post"
-        markdown-component(v-bind:value="post")
+        / markdown-component(v-bind:value="post")
+        markdown-component(v-model="post")
       .actions
         = f.submit '送信する', class: 'btn btn-large btn-primary'

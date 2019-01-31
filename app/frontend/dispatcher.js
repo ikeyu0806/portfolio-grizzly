@@ -63,6 +63,7 @@ export default class Dispatcher {
     return {
       list: '#index',
       form: '#new, #edit, #create, #update',
+      show: '#show',
       newForm: '#new, #create',
       editForm: '#edit, #update',
     };

@@ -10,8 +10,10 @@
       = @post.title
     strong 記事
     div
+      div data-vue-model="#{{ post:@post.content }.to_json}"
       .form-control.wysiwyg.mt-3  style="height:250px; max-height:500px;"
-        = @post.content
+        / = @post.content
+        markdown-component(v-model="post")
       .row
         | &nbsp;
         | &nbsp;
