@@ -7,8 +7,6 @@
 import marked from 'marked';
 
 export default {
-  // propsを定義
-  // v-bind:propsの名前
   props: ['value'],
   computed: {
     compiledMarkdown: function () {
