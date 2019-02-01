@@ -24,7 +24,7 @@ export default {
     }
   },
   created: function() {
-    this.compiled = marked(this.value, { sanitize: true } )
+    this.compileMarkdown()
     this.debounced = _.debounce(this.compileMarkdown, 300)
   }
 }
