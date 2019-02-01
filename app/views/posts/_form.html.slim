@@ -7,9 +7,10 @@
           ul
             - @post.errors.full_messages.each do |message|
               li = message
-      strong Title
+      strong タイトル
       br
       = f.text_field :title, class: 'mb-3 form-control form-control-lg'
+      strong 記事
       form.form-inline
         .row
           .col-sm-6
