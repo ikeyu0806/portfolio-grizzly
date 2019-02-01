@@ -43,12 +43,6 @@ export default class Dispatcher {
         options,
       ));
     }
-    // window.app = new Vue(Object.assign(
-    //   {
-    //     el: '#edit',
-    //   },
-    //   options,
-    // ));
   }
 
   static bindRoutes() {

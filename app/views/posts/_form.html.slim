@@ -17,7 +17,6 @@
             .form-group
               div data-vue-model="#{{ post: @post.content }.to_json}"
               = f.text_area :content, "v-model": "post", class: "form-control wysiwyg mt-3", style: "height:800px; max-height:1500px;"
-              /  "v-on:input":"update",
           .col-sm-6
             .form-group
               markdown-component(v-model="post")
