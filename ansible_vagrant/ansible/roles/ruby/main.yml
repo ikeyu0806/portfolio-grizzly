@@ -1,0 +1,4 @@
+- name: git clone rbenv
+- name: setting bash_profile
+- name: check doctor
+- name: install plugin
