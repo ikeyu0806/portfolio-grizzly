@@ -1,1 +1,5 @@
-- name:
+- name: delete mariadb
+- name: install mysql
+- name: setting mysql
+- name: start mysql
+- name: setting password
