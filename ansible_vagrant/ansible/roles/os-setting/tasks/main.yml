@@ -1,0 +1,6 @@
+- name: create user
+  user:
+    name: grizzly
+    password: grizzly
+- name: install git
+  yum: name=git
