@@ -14,3 +14,6 @@
 
 - name: enable mysql57-community
   command: yum-config-manager --enable mysql57-community
+
+- name: install mysql
+  yum: name=mysql-community-server state=present
