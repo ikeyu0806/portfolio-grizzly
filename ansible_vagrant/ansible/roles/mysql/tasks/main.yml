@@ -24,7 +24,14 @@
   yum: name=https://dev.mysql.com/get/mysql80-community-release-el7-2.noarch.rpm
 
 - name: start mysql
-  service: name=mysqld enabled=yes state=started
+  systemd:
+    name: mysqld
+    enabled: yes
+    state: started
+
+- name: get temporary password
+  shell: cat /var/log/mysqld.log | grep "temporary password" | awk '{print $11}'
+  register: mysql_default_password
 
 - name: root password changed
   mysql_user: name=root password=grizzly1! host=localhost
