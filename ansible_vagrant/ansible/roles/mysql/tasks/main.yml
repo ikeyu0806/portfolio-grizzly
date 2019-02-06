@@ -1,4 +1,5 @@
 - name: delete mariadb
   yum: name=mariadb-libs state=absent
 - file: path=/var/lib/mysql/ state=absent
-- shell: wget https://dev.mysql.com/get/mysql80-community-release-el7-2.noarch.rpm
+- get_url: https://dev.mysql.com/get/mysql80-community-release-el7-2.noarch.rpm
+- shell: rpm -Uvh mysql80-community-release-el7-2.noarch.rpm
