@@ -1,8 +1,6 @@
-h1 Editing post
-
 == render 'form'
-
-=> link_to 'Show', @post
-'|
-=< link_to 'Back', posts_path
-
+.pagination
+  li.page-item.page-link
+    => link_to 'Show', @post, class: "page-item"
+  li.page-item.page-link
+    =< link_to 'Back', posts_path

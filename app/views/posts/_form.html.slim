@@ -7,10 +7,18 @@
           ul
             - @post.errors.full_messages.each do |message|
               li = message
-      strong Title
+      strong タイトル
       br
       = f.text_field :title, class: 'mb-3 form-control form-control-lg'
-      div
-        = f.text_area :content, class: 'form-control wysiwyg mt-3', style: "height:250px; max-height:250px;"
-      .actions
-        = f.submit
+      strong 記事
+      form.form-inline
+        .row
+          .col-sm-6
+            .form-group
+              div data-vue-model="#{{ post: @post.content }.to_json}"
+              = f.text_area :content, "v-model": "post", class: "form-control wysiwyg mt-3", style: "height:800px; max-height:1500px;"
+          .col-sm-6
+            .form-group
+              markdown-component(v-model="post")
+        .actions
+          = f.submit '送信する', class: 'btn btn-large btn-primary'
