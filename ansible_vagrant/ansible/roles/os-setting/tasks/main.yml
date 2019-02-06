@@ -4,3 +4,5 @@
     password: grizzly
 - name: install git
   yum: name=git
+- name: install wget
+  yum: name=wget
