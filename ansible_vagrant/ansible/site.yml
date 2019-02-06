@@ -1,0 +1,6 @@
+- hosts: appservers
+  roles:
+    - os-setting
+    - mysql
+    - nginx
+    - ruby
