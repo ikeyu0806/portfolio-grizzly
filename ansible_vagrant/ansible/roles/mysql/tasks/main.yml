@@ -46,4 +46,9 @@
     dest: /root/.my.cnf
 
 - name: root password changed
-  mysql_user: name=root password=grizzly1! host=localhost
+  mysql_user: name=root
+              password=grizzly1!
+              host=localhost
+              login_user=root
+              login_password="{{ mysql_default_password }}"
+              state=present
