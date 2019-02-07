@@ -11,47 +11,23 @@
     name: https://dev.mysql.com/get/mysql80-community-release-el7-2.noarch.rpm
     state: present
 
-# - name: get mysql package
-#   shell: wget https://dev.mysql.com/get/mysql80-community-release-el7-2.noarch.rpm
-
-# - name: upgrade package
-#   shell: rpm -Uvh /home/vagrant/mysql80-community-release-el7-2.noarch.rpm
-
 - name: disable mysql80-community
   command: yum-config-manager --disable mysql80-community
 
 - name: enable mysql57-community
   command: yum-config-manager --enable mysql57-community
 
-# - name: install mysql lib
-#   yum:
-#     name=mysql-community-common
-#     state=present
-
 - name: install community server
   yum:
-    name=mysql-community-server
-    state=present
-
-# - name: install mysql lib
-#   yum:
-#     name:
-#       - mysql-community-server
-#       - mysql-community-client
-#       - mysql-community-common
-#       - mysql-community-libs
-#       - mysql-community-libs-compat
-#     state: present
-
-- name: install mysql-python library
-  yum:
-    name: MySQL-python
+    name:
+      - mysql-community-server
+      - MySQL-python
     state: present
 
-# - name: put my.cnf
-#   template:
-#     src: my.cnf.j2
-#     dest: /etc/my.cnf
+- name: put my.cnf
+  template:
+    src: my.cnf.j2
+    dest: /etc/my.cnf
 
 - name: start mysql
   systemd:
@@ -63,6 +39,11 @@
 - name: get temporary password
   shell: cat /var/log/mysqld.log | grep "temporary password" | awk '{print $11}'
   register: mysql_default_password
+
+- name: put root my.cnf
+  template:
+    src: root_my.cnf.j2
+    dest: /root/.my.cnf
 
 - name: root password changed
   mysql_user: name=root password=grizzly1! host=localhost
