@@ -11,6 +11,12 @@
     name: https://dev.mysql.com/get/mysql80-community-release-el7-2.noarch.rpm
     state: present
 
+# - name: get mysql package
+#   shell: wget https://dev.mysql.com/get/mysql80-community-release-el7-2.noarch.rpm
+
+# - name: upgrade package
+#   shell: rpm -Uvh /home/vagrant/mysql80-community-release-el7-2.noarch.rpm
+
 - name: disable mysql80-community
   command: yum-config-manager --disable mysql80-community
 
@@ -37,7 +43,7 @@
 #       - mysql-community-libs-compat
 #     state: present
 
-- name: install mysql library
+- name: install mysql-python library
   yum:
     name: MySQL-python
     state: present
