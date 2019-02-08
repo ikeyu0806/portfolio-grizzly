@@ -2,6 +2,6 @@
   become: true
   roles:
     - os-setting
-    - mysql
-    # - nginx
+    # - mysql
+    - nginx
     # - ruby
