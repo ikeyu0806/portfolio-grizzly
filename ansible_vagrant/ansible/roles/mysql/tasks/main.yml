@@ -29,6 +29,13 @@
     src: my.cnf.j2
     dest: /etc/my.cnf
 
+- name: put root my.cnf
+  template:
+    src: root_my.cnf.j2
+    dest: /root/.my.cnf
+    owner: root
+    group: root
+
 - name: start mysql
   systemd:
     name: mysqld
@@ -40,15 +47,16 @@
   shell: cat /var/log/mysqld.log | grep "temporary password" | awk '{print $11}'
   register: mysql_default_password
 
-- name: put root my.cnf
-  template:
-    src: root_my.cnf.j2
-    dest: /root/.my.cnf
+- name: change root user password
+  shell: |
+    mysql -u root -p'{{ mysql_default_password.stdout }}' --connect-expired-password -e "set password for root@'localhost'=password(';4gyxotKtj4y');"
 
-- name: root password changed
-  mysql_user: name=root
-              password=grizzly1!
-              host=localhost
-              login_user=root
-              login_password="{{ mysql_default_password }}"
-              state=present
+# - name: root password change
+#   mysql_user: name=root
+#               password=;4gyxotKtj4y
+#               host=localhost
+#               login_user=root
+#               login_password="{{ mysql_default_password.stdout }}"
+#               state=present
+
+
