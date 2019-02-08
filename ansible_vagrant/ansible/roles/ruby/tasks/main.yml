@@ -4,6 +4,10 @@
     dest: /home/grizzly/.rbenv
   become_user: grizzly
 
+- name: compile rbenv
+  shell: cd ~/.rbenv && src/configure && make -C src
+  become_user: grizzly
+
 - name: setting bash_profile
   blockinfile:
     dest: /home/grizzly/.bash_profile
@@ -23,3 +27,24 @@
     repo: https://github.com/rbenv/ruby-build.git
     dest: /home/grizzly/.rbenv/plugins/ruby-build
   become_user: grizzly
+
+- name: install library
+  yum:
+    name:
+      - openssl-devel
+      - readline-devel
+      - zlib-devel
+
+- name: rbenv install
+  shell: bash -lc "rbenv install 2.5.1"
+  become_user: grizzly
+
+- name: setting ruby version
+  shell: bash -lc "rbenv shell 2.5.1"
+  become_user: grizzly
+
+- name: install bundler
+  gem:
+    name: bundler
+    user_install: no
+    executable: /usr/local/rbenv/shims/gem
