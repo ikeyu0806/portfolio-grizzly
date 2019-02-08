@@ -1,4 +1,21 @@
 - name: git clone rbenv
+  git:
+    repo: https://github.com/rbenv/rbenv.git
+    dest: /home/grizzly/.rbenv
+
 - name: setting bash_profile
-- name: check doctor
+  blockinfile:
+    dest: /home/grizzly/.bash_profile
+    block: |
+      export PATH="$HOME/.rbenv/bin:$PATH"
+      eval "$(rbenv init -)"
+
+- name: make plugin directory
+  file:
+    path: /home/grizzly/.rbenv/plugins
+    state: directory
+
 - name: install plugin
+  git:
+    repo: https://github.com/rbenv/ruby-build.git
+    dest: /home/grizzly/.rbenv/plugins/ruby-build
