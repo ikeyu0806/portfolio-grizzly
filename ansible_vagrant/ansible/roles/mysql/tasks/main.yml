@@ -58,5 +58,3 @@
 #               login_user=root
 #               login_password="{{ mysql_default_password.stdout }}"
 #               state=present
-
-

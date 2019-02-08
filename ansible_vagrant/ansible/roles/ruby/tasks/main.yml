@@ -43,8 +43,13 @@
   shell: bash -lc "rbenv shell 2.5.1"
   become_user: grizzly
 
+- name: rbenv global
+  shell: bash -lc "rbenv global 2.5.1"
+  become_user: grizzly
+
 - name: install bundler
   gem:
     name: bundler
-    user_install: no
-    executable: /usr/local/rbenv/shims/gem
+    user_install: False
+    executable: /home/grizzly/.rbenv/shims/gem
+  become_user: grizzly
