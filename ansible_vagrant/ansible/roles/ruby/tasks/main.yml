@@ -2,10 +2,12 @@
   git:
     repo: https://github.com/rbenv/rbenv.git
     dest: /home/grizzly/.rbenv
+  become_user: grizzly
 
 - name: setting bash_profile
   blockinfile:
     dest: /home/grizzly/.bash_profile
+    owner: grizzly
     block: |
       export PATH="$HOME/.rbenv/bin:$PATH"
       eval "$(rbenv init -)"
@@ -13,9 +15,11 @@
 - name: make plugin directory
   file:
     path: /home/grizzly/.rbenv/plugins
+    owner: grizzly
     state: directory
 
 - name: install plugin
   git:
     repo: https://github.com/rbenv/ruby-build.git
     dest: /home/grizzly/.rbenv/plugins/ruby-build
+  become_user: grizzly
