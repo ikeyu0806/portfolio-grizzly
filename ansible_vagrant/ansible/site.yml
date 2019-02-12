@@ -1,7 +1,7 @@
 - hosts: grizzly-servers
   become: true
   roles:
-    # - os-setting
-    # - mysql
-    # - nginx
+    - os-setting
+    - mysql
+    - nginx
     - ruby
