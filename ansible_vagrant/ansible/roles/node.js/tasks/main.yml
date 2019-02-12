@@ -1,0 +1,5 @@
+- name: Add repository
+  shell: curl -sL https://rpm.nodesource.com/setup_10.x | bash -
+
+- name: Install nodejs
+  yum: name=nodejs state=present
