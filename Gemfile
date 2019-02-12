@@ -20,6 +20,7 @@ gem 'slim-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'virtus'
 gem 'webpacker'
+gem 'unicorn'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
