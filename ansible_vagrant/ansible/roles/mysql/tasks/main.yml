@@ -24,6 +24,11 @@
       - MySQL-python
     state: present
 
+- name: initial setting confirmation
+  shell: service mysqld status | grep active
+  ignore_errors: true
+  register: init_flag
+
 - name: put my.cnf
   template:
     src: my.cnf.j2
@@ -50,11 +55,5 @@
 - name: change root user password
   shell: |
     mysql -u root -p'{{ mysql_default_password.stdout }}' --connect-expired-password -e "set password for root@'localhost'=password(';4gyxotKtj4y');"
+  when: init_flag is failed
 
-# - name: root password change
-#   mysql_user: name=root
-#               password=;4gyxotKtj4y
-#               host=localhost
-#               login_user=root
-#               login_password="{{ mysql_default_password.stdout }}"
-#               state=present
