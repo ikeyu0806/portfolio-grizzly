@@ -9,7 +9,6 @@ pid    "#{app_path}/current/tmp/pids/unicorn.grizzly.pid"
 listen "#{app_path}/current/tmp/sockets/unicorn.grizzly.sock", backlog: 8096
 
 timeout 30
-listen 8080
 
 stderr_path 'log/unicorn.stderr.log'
 stdout_path 'log/unicorn.stdout.log'
