@@ -58,4 +58,12 @@ group :test do
   gem 'shoulda-matchers', github: 'thoughtbot/shoulda-matchers'
 end
 
+group :deployment do
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano3-unicorn'
+end
+
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
