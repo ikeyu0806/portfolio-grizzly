@@ -44,3 +44,5 @@ node_modules/**/*
 
 /ansible_vagrant/.vagrant/**/*
 /ansible_vagrant/ansible/site.retry
+
+/current/tmp/pids/*
