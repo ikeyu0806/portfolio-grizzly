@@ -20,3 +20,19 @@
   template:
     src: nginx.conf
     dest: /etc/nginx/nginx.conf
+
+- name: nginx pid file directory
+  file:
+    path: /var/www/grizzly/current/tmp/pids
+    state: directory
+    owner: grizzly
+    group: grizzly
+    mode: 0755
+
+- name: nginx sock file directory
+  file:
+    path: /var/www/grizzly/current/tmp/sockets
+    state: directory
+    owner: grizzly
+    group: grizzly
+    mode: 0755
