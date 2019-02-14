@@ -15,3 +15,8 @@
   yum:
     name: nginx
     state: present
+
+- name: put nginx.conf
+  template:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
