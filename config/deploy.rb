@@ -8,7 +8,6 @@ set :repo_url, 'git@github.com:naviplus-asp/grizzly.git'
 set :branch, 'master'
 set :deploy_to, '/var/www/grizzly'
 set :pty, true
-set :scm, :git
 
 set :rbenv_type, :user
 set :rbenv_ruby, '2.5.1'
