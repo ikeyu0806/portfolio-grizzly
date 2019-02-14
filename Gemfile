@@ -18,9 +18,9 @@ gem 'sass-rails', '~> 5.0'
 gem 'slim', '3.0.9'
 gem 'slim-rails'
 gem 'uglifier', '>= 1.3.0'
+gem 'unicorn'
 gem 'virtus'
 gem 'webpacker'
-gem 'unicorn'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
