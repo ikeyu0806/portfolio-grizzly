@@ -22,6 +22,7 @@
     name:
       - mysql-community-server
       - MySQL-python
+      - mysql-devel
     state: present
 
 - name: initial setting confirmation
