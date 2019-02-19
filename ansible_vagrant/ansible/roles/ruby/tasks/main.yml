@@ -70,11 +70,3 @@
   become_user: grizzly
   when: rbenv_stat.stat.isdir is not defined and not ansible_check_mode
 
-- name: install rails
-  gem:
-    name: rails
-    version: 5.2.2
-    user_install: False
-    executable: /home/grizzly/.rbenv/shims/gem
-  become_user: grizzly
-  when: rbenv_stat.stat.isdir is not defined and not ansible_check_mode
