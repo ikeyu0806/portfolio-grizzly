@@ -4,8 +4,8 @@ require 'etc'
 
 app_path = '/home/grizzly'
 
-pid    "#{app_path}/current/tmp/pids/unicorn.grizzly.pid"
-listen "#{app_path}/current/tmp/sockets/unicorn.grizzly.sock", backlog: 8096
+pid    "#{app_path}/shared/tmp/pids/unicorn.grizzly.pid"
+listen "#{app_path}/shared/tmp/sockets/unicorn.grizzly.sock", backlog: 8096
 
 timeout 30
 
