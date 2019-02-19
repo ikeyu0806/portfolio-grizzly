@@ -2,7 +2,7 @@
 
 require 'etc'
 
-app_path = '/home/grizzly'
+app_path = '/var/www/grizzly'
 
 pid    "#{app_path}/shared/tmp/pids/unicorn.grizzly.pid"
 listen "#{app_path}/shared/tmp/sockets/unicorn.grizzly.sock", backlog: 8096
