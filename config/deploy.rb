@@ -12,6 +12,7 @@ set :pty, true
 set :rbenv_type, :user
 set :rbenv_ruby, '2.5.1'
 set :rbenv_path, '/home/grizzly/.rbenv'
+set :bundle_path, './vendor/bundle'
 set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
 set :rbenv_map_bins, %w[rake gem bundle ruby rails]
 
@@ -19,8 +20,6 @@ set :linked_dirs, fetch(:linked_dirs, []) << '.bundle'
 
 set :unicorn_pid, -> { '/home/grizzly/current/tmp/pids/unicorn.grizzly.pid' }
 set :unicorn_config_path, 'config/unicorn/production.rb'
-
-# set :bundle_path, -> { release_path.join('.bundler') }
 
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
