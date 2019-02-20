@@ -16,8 +16,10 @@ set :bundle_path, -> { shared_path.join('bundle') }
 set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
 set :rbenv_map_bins, %w[rake gem bundle ruby rails]
 
+set :rails_env, 'production'
+
 append :linked_files, 'config/master.key'
-append :linked_dirs, '.bundle', 'tmp/pids'
+append :linked_dirs, '.bundle', 'tmp/pids', 'tmp/sockets'
 
 set :unicorn_pid, -> { '/home/grizzly/shared/tmp/pids/unicorn.grizzly.pid' }
 set :unicorn_config_path, 'config/unicorn/production.rb'
