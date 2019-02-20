@@ -22,11 +22,6 @@ append :linked_dirs, '.bundle', 'tmp/pids'
 set :unicorn_pid, -> { '/home/grizzly/shared/tmp/pids/unicorn.grizzly.pid' }
 set :unicorn_config_path, 'config/unicorn/production.rb'
 
-set :default_env, {
-  "RAILS_ENV" => "production",
-  "RAILS_MASTER_KEY" => ENV["RAILS_MASTER_KEY"]
-}
-
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
   desc 'Restart application'
