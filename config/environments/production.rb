@@ -13,7 +13,7 @@ Rails.application.configure do
 
   config.assets.js_compressor = :uglifier
 
-  config.assets.compile = false
+  config.assets.compile = true
 
   config.active_storage.service = :local
 
@@ -28,6 +28,8 @@ Rails.application.configure do
   config.active_support.deprecation = :notify
 
   config.log_formatter = ::Logger::Formatter.new
+
+  config.require_master_key = true
 
   if ENV['RAILS_LOG_TO_STDOUT'].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
