@@ -15,4 +15,6 @@ require 'capistrano/bundler'
 
 require 'capistrano3/unicorn'
 
+require 'capistrano/rails/migrations'
+
 Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r }
