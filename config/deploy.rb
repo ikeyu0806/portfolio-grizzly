@@ -21,7 +21,7 @@ set :rails_env, 'production'
 append :linked_files, 'config/master.key', 'config/database.yml'
 append :linked_dirs, '.bundle', 'tmp/pids', 'tmp/sockets'
 
-set :unicorn_pid, -> { '/home/grizzly/shared/tmp/pids/unicorn.grizzly.pid' }
+set :unicorn_pid, -> { '/var/grizzly/shared/tmp/pids/unicorn.grizzly.pid' }
 set :unicorn_config_path, 'config/unicorn/production.rb'
 
 after 'deploy:publishing', 'deploy:restart'
