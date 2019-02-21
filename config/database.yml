@@ -26,4 +26,5 @@ test:
 
 production:
   <<: *default
-  database: grizzly_production
+  database: grizzly
+  username: grizzly

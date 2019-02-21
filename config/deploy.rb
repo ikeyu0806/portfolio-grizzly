@@ -18,7 +18,7 @@ set :rbenv_map_bins, %w[rake gem bundle ruby rails]
 
 set :rails_env, 'production'
 
-append :linked_files, 'config/master.key'
+append :linked_files, 'config/master.key', 'config/database.yml'
 append :linked_dirs, '.bundle', 'tmp/pids', 'tmp/sockets'
 
 set :unicorn_pid, -> { '/home/grizzly/shared/tmp/pids/unicorn.grizzly.pid' }
