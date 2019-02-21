@@ -28,3 +28,4 @@ production:
   <<: *default
   database: grizzly
   username: grizzly
+  password: ;4gyxotKtj4y
