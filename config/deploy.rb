@@ -16,6 +16,7 @@ set :bundle_path, -> { shared_path.join('bundle') }
 set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
 set :rbenv_map_bins, %w[rake gem bundle ruby rails]
 
+set :stage, :production
 set :rails_env, 'production'
 
 append :linked_files, 'config/master.key', 'config/database.yml'
@@ -23,6 +24,7 @@ append :linked_dirs, '.bundle', 'tmp/pids', 'tmp/sockets'
 
 set :unicorn_pid, -> { '/var/www/grizzly/shared/tmp/pids/unicorn.grizzly.pid' }
 set :unicorn_config_path, 'config/unicorn/production.rb'
+set :unicorn_rack_env, "production"
 
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do

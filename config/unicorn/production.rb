@@ -2,6 +2,8 @@
 
 require 'etc'
 
+RAILS_ENV  = 'production'
+
 app_path = '/var/www/grizzly'
 
 pid    "#{app_path}/shared/tmp/pids/unicorn.grizzly.pid"
