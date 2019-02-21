@@ -36,3 +36,7 @@
     owner: grizzly
     group: grizzly
     mode: 0755
+
+- name: start nginx
+  service: name=nginx state=started
+  sudo: yes
