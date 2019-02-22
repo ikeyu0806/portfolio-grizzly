@@ -20,7 +20,7 @@ set :stage, :production
 set :rails_env, 'production'
 
 append :linked_files, 'config/master.key', 'config/database.yml'
-append :linked_dirs, '.bundle', 'tmp/pids', 'tmp/sockets'
+append :linked_dirs, '.bundle', 'tmp/pids', 'tmp/sockets', 'log'
 
 set :unicorn_pid, -> { '/var/www/grizzly/shared/tmp/pids/unicorn.grizzly.pid' }
 set :unicorn_config_path, 'config/unicorn/production.rb'
