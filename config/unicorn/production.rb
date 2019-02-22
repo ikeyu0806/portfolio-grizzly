@@ -14,7 +14,8 @@ timeout 30
 stderr_path 'log/unicorn.stderr.log'
 stdout_path 'log/unicorn.stdout.log'
 
-# worker_processes Etc.nprocessors * 2
+worker_processes Etc.nprocessors * 2
+working_directory "#{app_path}/current"
 
 preload_app true
 
