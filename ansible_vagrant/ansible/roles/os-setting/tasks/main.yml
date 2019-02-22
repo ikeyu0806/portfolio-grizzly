@@ -11,3 +11,8 @@
 
 - name: install wget
   yum: name=wget
+
+- name: disable SELinux
+  template:
+    src: config
+    dest: /etc/selinux/config
