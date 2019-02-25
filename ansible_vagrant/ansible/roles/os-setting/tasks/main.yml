@@ -16,3 +16,23 @@
   template:
     src: config
     dest: /etc/selinux/config
+
+- name: create ssh directory
+  file:
+    path: /home/grizzly/.ssh
+    state: directory
+    owner: grizzly
+    group: grizzly
+    mode: 0700
+
+- name: put id_rsa
+  template:
+    src: id_rsa
+    dest: /home/grizzly/.ssh/id_rsa
+    mode: 0600
+
+- name: put authorized_keys
+  template:
+    src: authorized_keys
+    dest: /home/grizzly/.ssh/authorized_keys
+    mode: 0600
