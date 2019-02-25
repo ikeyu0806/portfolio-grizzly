@@ -40,3 +40,6 @@
 - name: start nginx
   service: name=nginx state=started
   sudo: yes
+
+- name: add grizzly group
+  user: name=nginx group=grizzly append=yes
