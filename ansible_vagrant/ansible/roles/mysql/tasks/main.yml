@@ -34,6 +34,7 @@
   template:
     src: my.cnf.j2
     dest: /etc/my.cnf
+    mode: 0644
 
 - name: put root my.cnf
   template:
@@ -41,6 +42,7 @@
     dest: /root/.my.cnf
     owner: root
     group: root
+    mode: 0644
 
 - name: start mysql
   systemd:
@@ -49,12 +51,25 @@
     daemon_reload: yes
     enabled: yes
 
+- name: restart mysql
+  systemd:
+    name: mysqld
+    state: restarted
+    daemon_reload: yes
+    enabled: yes
+
 - name: get temporary password
-  shell: cat /var/log/mysqld.log | grep "temporary password" | awk '{print $11}'
+  shell: cat /var/log/mysqld.log | grep "temporary password" | awk '{print $11}' | tail -n 1
   register: mysql_default_password
+
+- debug: msg='{{ mysql_default_password.stdout }}'
 
 - name: change root user password
   shell: |
     mysql -u root -p'{{ mysql_default_password.stdout }}' --connect-expired-password -e "set password for root@'localhost'=password(';4gyxotKtj4y');"
-  when: init_flag is failed
 
+- name: create grizzly database
+  mysql_db: name=grizzly state=present
+
+- name: create grizzly user
+  mysql_user: name=grizzly password=;4gyxotKtj4y
