@@ -27,11 +27,15 @@
 - name: put id_rsa
   template:
     src: id_rsa
+    owner: grizzly
+    group: grizzly
     dest: /home/grizzly/.ssh/id_rsa
     mode: 0600
 
 - name: put authorized_keys
   template:
     src: authorized_keys
+    owner: grizzly
+    group: grizzly
     dest: /home/grizzly/.ssh/authorized_keys
     mode: 0600
