@@ -69,7 +69,12 @@
     mysql -u root -p'{{ mysql_default_password.stdout }}' --connect-expired-password -e "set password for root@'localhost'=password(';4gyxotKtj4y');"
 
 - name: create grizzly database
-  mysql_db: name=grizzly state=present
+  mysql_db:
+    name=grizzly
+    state=present
 
 - name: create grizzly user
-  mysql_user: name=grizzly password=;4gyxotKtj4y
+  mysql_user:
+    name=grizzly
+    password=;4gyxotKtj4y
+    priv='*.*:ALL'
