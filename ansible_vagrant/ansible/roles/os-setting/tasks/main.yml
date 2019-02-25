@@ -12,10 +12,9 @@
 - name: install wget
   yum: name=wget
 
-- name: disable SELinux
-  template:
-    src: config
-    dest: /etc/selinux/config
+- name: disable selinux
+  selinux:
+    state: disabled
 
 - name: create ssh directory
   file:
