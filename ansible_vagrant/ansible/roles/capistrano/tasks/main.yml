@@ -1,0 +1,23 @@
+- name: create config directory
+  file:
+    path: /var/www/grizzly/shared/config
+    state: directory
+    owner: grizzly
+    group: grizzly
+    mode: 0775
+
+- name: put master.key
+  template:
+    src: master.key
+    dest: /var/www/grizzly/shared/config/master.key
+    owner: grizzly
+    group: grizzly
+    mode: 0775
+
+- name: put database.yml
+  template:
+    src: database.yml
+    dest: /var/www/grizzly/shared/config/database.yml
+    owner: grizzly
+    group: grizzly
+    mode: 0775

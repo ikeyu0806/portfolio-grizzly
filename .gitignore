@@ -50,3 +50,5 @@ node_modules/**/*
 ansible_vagrant/ansible/roles/os-setting/templates/authorized_keys
 
 ansible_vagrant/ansible/roles/os-setting/templates/id_rsa
+
+ansible_vagrant/ansible/roles/capistrano/templates/master.key

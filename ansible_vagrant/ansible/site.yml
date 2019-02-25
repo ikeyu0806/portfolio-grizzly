@@ -1,8 +1,9 @@
 - hosts: grizzly-servers
   become: true
   roles:
-    - os-setting
-    - mysql
-    - nginx
-    - ruby
-    - node.js
+    # - os-setting
+    # - mysql
+    # - nginx
+    # - ruby
+    # - node.js
+    - capistrano
