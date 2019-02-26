@@ -1,0 +1,89 @@
+- name: clone rbenv confirmation
+  stat:
+    path: /home/grizzly/.rbenv
+  register: rbenv_repository
+
+- name: git clone rbenv
+  git:
+    repo: https://github.com/rbenv/rbenv.git
+    dest: /home/grizzly/.rbenv
+  become_user: grizzly
+  when: rbenv_repository.stat.isdir is not defined and not ansible_check_mode
+
+- name: rbenv compile confirmation
+  stat:
+    path: /home/grizzly/.rbenv/bin
+  register: rbenv_compile
+
+- name: compile rbenv
+  shell: cd ~/.rbenv && src/configure && make -C src
+  become_user: grizzly
+  when: rbenv_compile.stat.isdir is not defined and not ansible_check_mode
+
+- name: setting bash_profile
+  blockinfile:
+    dest: /home/grizzly/.bash_profile
+    owner: grizzly
+    block: |
+      export PATH="$HOME/.rbenv/bin:$PATH"
+      eval "$(rbenv init -)"
+  when: rbenv_repository.stat.isdir is not defined and not ansible_check_mode
+
+- name: rbenv plugin confirmation
+  stat:
+    path: /home/grizzly/.rbenv/plugins
+  register: rbenv_plugin
+
+- name: make plugin directory
+  file:
+    path: /home/grizzly/.rbenv/plugins
+    owner: grizzly
+    state: directory
+  when: rbenv_plugin.stat.isdir is not defined and not ansible_check_mode
+
+- name: install plugin
+  git:
+    repo: https://github.com/rbenv/ruby-build.git
+    dest: /home/grizzly/.rbenv/plugins/ruby-build
+  become_user: grizzly
+  when: rbenv_plugin.stat.isdir is not defined and not ansible_check_mode
+
+- name: install library
+  yum:
+    name:
+      - openssl-devel
+      - readline-devel
+      - zlib-devel
+    state: present
+
+- name: initial setting confirmation
+  stat:
+    path: /home/grizzly/.rbenv/versions/2.5.1
+  register: ruby_251
+
+- name: rbenv install
+  shell: bash -lc "rbenv install 2.5.1"
+  become_user: grizzly
+  when: ruby_251.stat.isdir is not defined and not ansible_check_mode
+
+- name: setting ruby version
+  shell: bash -lc "rbenv shell 2.5.1"
+  become_user: grizzly
+  when: ruby_251.stat.isdir is not defined and not ansible_check_mode
+
+- name: rbenv global
+  shell: bash -lc "rbenv global 2.5.1"
+  become_user: grizzly
+  when: ruby_251.stat.isdir is not defined and not ansible_check_mode
+
+- name: install bundler
+  gem:
+    name: bundler
+    version: 1.6.0
+    user_install: False
+    executable: /home/grizzly/.rbenv/shims/gem
+    state: present
+  become_user: grizzly
+
+- name: update gems
+  command: gem update --system

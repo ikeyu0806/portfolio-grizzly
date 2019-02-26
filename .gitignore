@@ -41,3 +41,14 @@ public/uploads/tmp/**/*
 yarn-debug.log*
 .yarn-integrity
 node_modules/**/*
+
+/ansible_vagrant/.vagrant/**/*
+/ansible_vagrant/ansible/site.retry
+
+/current/tmp/**/*
+
+ansible_vagrant/ansible/roles/os-setting/templates/authorized_keys
+
+ansible_vagrant/ansible/roles/os-setting/templates/id_rsa
+
+ansible_vagrant/ansible/roles/capistrano/templates/master.key

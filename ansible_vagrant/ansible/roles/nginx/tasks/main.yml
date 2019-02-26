@@ -1,0 +1,45 @@
+- name: install yum-utils
+  yum:
+    name: yum-utils
+    state: present
+
+- name: make repository file
+  template:
+    src: nginx.repo
+    dest: /etc/yum.repos.d/nginx.repo
+
+- name: setting branch
+  command: yum-config-manager --enable nginx-mainline
+
+- name: install nginx
+  yum:
+    name: nginx
+    state: present
+
+- name: put nginx.conf
+  template:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+
+- name: nginx pid file directory
+  file:
+    path: /var/www/grizzly/current/tmp/pids
+    state: directory
+    owner: grizzly
+    group: grizzly
+    mode: 0755
+
+- name: nginx sock file directory
+  file:
+    path: /var/www/grizzly/current/tmp/sockets
+    state: directory
+    owner: grizzly
+    group: grizzly
+    mode: 0755
+
+- name: start nginx
+  service: name=nginx state=started
+  sudo: yes
+
+- name: add grizzly group
+  user: name=nginx group=grizzly append=yes

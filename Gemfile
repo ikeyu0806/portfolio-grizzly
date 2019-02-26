@@ -18,8 +18,10 @@ gem 'sass-rails', '~> 5.0'
 gem 'slim', '3.0.9'
 gem 'slim-rails'
 gem 'uglifier', '>= 1.3.0'
+gem 'unicorn'
 gem 'virtus'
 gem 'webpacker'
+gem 'bundler', '>= 1.6.0'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
@@ -55,6 +57,14 @@ group :test do
   gem 'rubocop-checkstyle_formatter', require: false
   gem 'selenium-webdriver'
   gem 'shoulda-matchers', github: 'thoughtbot/shoulda-matchers'
+end
+
+group :deployment do
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano3-unicorn'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

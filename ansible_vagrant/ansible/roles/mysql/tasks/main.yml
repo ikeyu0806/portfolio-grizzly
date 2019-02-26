@@ -1,0 +1,80 @@
+- name: delete mariadb
+  yum: name=mariadb-libs state=absent
+
+- name: delete mysql lib folder
+  file:
+    path: /var/lib/mysql/
+    state: absent
+
+- name: install yum repository
+  yum:
+    name: https://dev.mysql.com/get/mysql80-community-release-el7-2.noarch.rpm
+    state: present
+
+- name: disable mysql80-community
+  command: yum-config-manager --disable mysql80-community
+
+- name: enable mysql57-community
+  command: yum-config-manager --enable mysql57-community
+
+- name: install community server
+  yum:
+    name:
+      - mysql-community-server
+      - MySQL-python
+      - mysql-devel
+    state: present
+
+- name: initial setting confirmation
+  shell: service mysqld status | grep active
+  ignore_errors: true
+  register: init_flag
+
+- name: put my.cnf
+  template:
+    src: my.cnf.j2
+    dest: /etc/my.cnf
+    mode: 0644
+
+- name: put root my.cnf
+  template:
+    src: root_my.cnf.j2
+    dest: /root/.my.cnf
+    owner: root
+    group: root
+    mode: 0644
+
+- name: start mysql
+  systemd:
+    name: mysqld
+    state: started
+    daemon_reload: yes
+    enabled: yes
+
+- name: restart mysql
+  systemd:
+    name: mysqld
+    state: restarted
+    daemon_reload: yes
+    enabled: yes
+
+- name: get temporary password
+  shell: cat /var/log/mysqld.log | grep "temporary password" | awk '{print $11}' | tail -n 1
+  register: mysql_default_password
+
+- debug: msg='{{ mysql_default_password.stdout }}'
+
+- name: change root user password
+  shell: |
+    mysql -u root -p'{{ mysql_default_password.stdout }}' --connect-expired-password -e "set password for root@'localhost'=password('{{ root_password }}');"
+
+- name: create grizzly database
+  mysql_db:
+    name=grizzly
+    state=present
+
+- name: create grizzly user
+  mysql_user:
+    name=grizzly
+    password='{{ grizzly_password }}'
+    priv='*.*:ALL'
