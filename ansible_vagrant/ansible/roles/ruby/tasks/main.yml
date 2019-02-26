@@ -84,3 +84,6 @@
     executable: /home/grizzly/.rbenv/shims/gem
     state: present
   become_user: grizzly
+
+- name: update gems
+  command: gem update --system
