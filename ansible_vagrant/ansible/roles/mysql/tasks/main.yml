@@ -66,7 +66,7 @@
 
 - name: change root user password
   shell: |
-    mysql -u root -p'{{ mysql_default_password.stdout }}' --connect-expired-password -e "set password for root@'localhost'=password(';4gyxotKtj4y');"
+    mysql -u root -p'{{ mysql_default_password.stdout }}' --connect-expired-password -e "set password for root@'localhost'=password('{{ root_password }}');"
 
 - name: create grizzly database
   mysql_db:
@@ -76,5 +76,5 @@
 - name: create grizzly user
   mysql_user:
     name=grizzly
-    password=;4gyxotKtj4y
+    password='{{ grizzly_password }}'
     priv='*.*:ALL'

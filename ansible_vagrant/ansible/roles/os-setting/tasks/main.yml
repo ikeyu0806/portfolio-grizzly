@@ -4,7 +4,7 @@
 - name: create user
   user:
     name: grizzly
-    password: grizzly
+    password: "{{ grizzly_password }}"
 
 - name: install git
   yum: name=git
