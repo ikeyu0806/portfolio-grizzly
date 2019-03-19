@@ -5,7 +5,7 @@ lock '~> 3.11.0'
 set :application, 'grizzly'
 
 set :repo_url, 'git@github.com:naviplus-asp/grizzly.git'
-set :branch, 'deploy_setting'
+set :branch, 'master'
 set :deploy_to, '/var/www/grizzly'
 set :pty, true
 
