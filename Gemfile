@@ -56,7 +56,7 @@ group :test do
   gem 'rails-controller-testing'
   gem 'rubocop-checkstyle_formatter', require: false
   gem 'selenium-webdriver'
-  gem 'shoulda-matchers', github: 'thoughtbot/shoulda-matchers'
+  gem 'shoulda-matchers'
 end
 
 group :deployment do
