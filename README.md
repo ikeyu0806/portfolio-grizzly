@@ -1,24 +1,60 @@
-# README
+# Grizzly
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Grizzlyはマークダウン記法に対応した記事投稿サービスです。以下の機能を実装しています。
 
-Things you may want to cover:
+- 記事投稿、編集、削除機能
 
-* Ruby version
+- ユーザ作成機能
 
-* System dependencies
+- フォロー、アンフォロー機能
 
-* Configuration
+- 気に入った記事へのいいね機能
 
-* Database creation
+- 記事へのコメント機能
 
-* Database initialization
+- Ansibleによるデプロイ環境構築
 
-* How to run the test suite
+- Capistranoによる自動デプロイ
 
-* Services (job queues, cache servers, search engines, etc.)
+## 開発環境の構築
 
-* Deployment instructions
+```
 
-* ...
+git clone git@github.com:ikeyu0806/grizzly.git
+```
+
+```
+
+bundle install --path vendor/bundle
+```
+
+```
+
+bundle exec rails db:migrate
+```
+
+```
+
+yarn install
+```
+
+```
+
+bundle exec guard
+```
+
+## 本番環境の構築
+
+```
+
+ansible-playbook --list-tasks -i production -l [対象サーバ名] ansible_vagrant/ansible/site.yml
+ansible-playbook --list-hosts -i production -l [対象サーバ名] ansible_vagrant/ansible/site.yml
+ansible-playbook -vvv -i production -l [対象サーバ名] ansible_vagrant/ansible/site.yml
+```
+
+### デプロイ
+
+```
+
+bundle exec cap prouction deploy
+```

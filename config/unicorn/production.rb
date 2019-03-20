@@ -2,7 +2,7 @@
 
 require 'etc'
 
-RAILS_ENV  = 'production'
+RAILS_ENV = 'production'
 
 app_path = '/var/www/grizzly'
 
