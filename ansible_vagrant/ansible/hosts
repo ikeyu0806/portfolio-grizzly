@@ -1,2 +1,5 @@
 [grizzly-servers]
 118.27.33.70
+
+[all:vars]
+ansible_ssh_user=root
