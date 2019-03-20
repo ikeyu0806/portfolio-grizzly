@@ -24,7 +24,7 @@ append :linked_dirs, '.bundle', 'tmp/pids', 'tmp/sockets', 'log'
 
 set :unicorn_pid, -> { '/var/www/grizzly/shared/tmp/pids/unicorn.grizzly.pid' }
 set :unicorn_config_path, 'config/unicorn/production.rb'
-set :unicorn_rack_env, "production"
+set :unicorn_rack_env, 'production'
 
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
@@ -34,10 +34,8 @@ namespace :deploy do
   end
   desc 'Upload database.yml'
   task :upload do
-    on roles(:app) do |host|
-      if test "[ ! -d #{shared_path}/config ]"
-        execute "mkdir -p #{shared_path}/config"
-      end
+    on roles(:app) do |_host|
+      execute "mkdir -p #{shared_path}/config" if test "[ ! -d #{shared_path}/config ]"
       upload!('config/database.yml', "#{shared_path}/config/database.yml")
     end
   end
