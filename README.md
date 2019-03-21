@@ -1,8 +1,8 @@
 # Grizzly
 
-Grizzlyはマークダウン記法に対応した記事投稿サービスです。
-
 ### [このリンク先](http://118.27.33.70)で公開しています
+
+Grizzlyはマークダウン記法に対応した記事投稿サービスです。
 
 以下の機能を実装しています。
 
@@ -62,6 +62,7 @@ bundle exec guard
 Ansibleでのプロビジョニング
 
 ```
+cd ansible_vagrant/ansible
 
 ansible-playbook --list-tasks site.yml -i hosts
 
