@@ -60,8 +60,21 @@ Ansibleでのプロビジョニング
 ```
 
 ansible-playbook --list-tasks site.yml -i hosts
+
 ansible-playbook --list-hosts site.yml -i hosts
+
 ansible-playbook -vvv site.yml -i hosts
+```
+
+以下のファイルはgitの管理対象外のため手動で設置する必要あり
+
+```
+
+ansible_vagrant/ansible/roles/os-setting/templates/authorized_keys
+
+ansible_vagrant/ansible/roles/os-setting/templates/id_rsa
+
+ansible_vagrant/ansible/roles/capistrano/templates/master.key
 ```
 
 デプロイ

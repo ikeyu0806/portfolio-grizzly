@@ -42,3 +42,9 @@
     group: grizzly
     dest: /home/grizzly/.ssh/authorized_keys
     mode: 0600
+
+- name: setting firefall
+  shell: bash -lc "firewall-cmd --permanent --add-service=http --zone=public"
+
+- name: reload forefall setting
+  shell: bash -lc "firewall-cmd --reload"
