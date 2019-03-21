@@ -12,6 +12,9 @@
 - name: install wget
   yum: name=wget
 
+- name: install gcc
+  yum: name=gcc
+
 - name: disable selinux
   selinux:
     state: disabled
