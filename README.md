@@ -18,25 +18,35 @@ Grizzlyはマークダウン記法に対応した記事投稿サービスです�
 
 ## 開発環境の構築
 
+git clone
+
 ```
 
 git clone git@github.com:ikeyu0806/grizzly.git
 ```
+
+必要なgemのインストール
 
 ```
 
 bundle install --path vendor/bundle
 ```
 
+マイグレーション
+
 ```
 
 bundle exec rails db:migrate
 ```
 
+javascriptパッケージのインストール
+
 ```
 
 yarn install
 ```
+
+サーバ起動
 
 ```
 
@@ -45,14 +55,29 @@ bundle exec guard
 
 ## 本番環境の構築
 
+Ansibleでのプロビジョニング
+
 ```
 
-ansible-playbook --list-tasks -i production -l [対象サーバ名] ansible_vagrant/ansible/site.yml
-ansible-playbook --list-hosts -i production -l [対象サーバ名] ansible_vagrant/ansible/site.yml
-ansible-playbook -vvv -i production -l [対象サーバ名] ansible_vagrant/ansible/site.yml
+ansible-playbook --list-tasks site.yml -i hosts
+
+ansible-playbook --list-hosts site.yml -i hosts
+
+ansible-playbook -vvv site.yml -i hosts
 ```
 
-### デプロイ
+以下のファイルはgitの管理対象外のため手動で設置する必要あり
+
+```
+
+ansible_vagrant/ansible/roles/os-setting/templates/authorized_keys
+
+ansible_vagrant/ansible/roles/os-setting/templates/id_rsa
+
+ansible_vagrant/ansible/roles/capistrano/templates/master.key
+```
+
+デプロイ
 
 ```
 
