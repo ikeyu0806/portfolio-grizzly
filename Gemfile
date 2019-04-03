@@ -35,6 +35,8 @@ group :development, :test do
   gem 'guard-rubocop', require: false
   gem 'hirb'
   gem 'hirb-unicode-steakknife'
+  gem 'pry'
+  gem 'rb-readline'
   gem 'rspec-rails'
 end
 
