@@ -60,7 +60,7 @@
         "js-storage": "1.0.4",
         "jszip": "3.1.5",
         "loaders.css": "0.1.2",
-        "lodash": "^4.17.11",
+        "lodash": "^4.17.13",
         "marked": "^0.6.0",
         "matchmedia": "0.1.2",
         "modernizr": "3.6.0",
